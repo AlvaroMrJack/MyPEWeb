@@ -28,18 +28,16 @@
             <div class="nav-wrapper">
             <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">MD Template</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#intro">Service</a></li>
-                    <li><a href="#work">Work</a></li>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
                     <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://github.com/joashp/material-design-template" target="_blank">Download</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
-                    <li><a href="#intro">Service</a></li>
-                    <li><a href="#work">Work</a></li>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
                     <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://github.com/joashp/material-design-template" target="_blank">Download</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
                 </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
@@ -61,8 +59,8 @@
     </div>
 </div>
 
-<!--Intro and service-->
-<div id="intro" class="section scrollspy">
+<!--inicio and service-->
+<div id="inicio" class="section scrollspy">
     <div class="container">
         <div class="row">
             <div  class="col s12">
@@ -94,10 +92,10 @@
     </div>
 </div>
 
-<!--Work-->
-<div class="section scrollspy" id="work">
+<!--productos-->
+<div class="section scrollspy" id="productos">
     <div class="container">
-        <h2 class="header text_b">Work </h2>
+        <h2 class="header text_b">Productos </h2>
         <div class="row">
             <div class="col s12 m4 l4">
                 <div class="card">
@@ -310,44 +308,11 @@
 </div>
 
 <!--Footer-->
-<footer id="contact" class="page-footer default_color scrollspy">
+<footer id="contacto" class="page-footer default_color scrollspy">
     <div class="container">  
         <div class="row">
-            <div class="col l6 s12">
-                <form class="col s12" action="contact.php" method="post">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="mdi-action-account-circle prefix white-text"></i>
-                            <input id="icon_prefix" name="name" type="text" class="validate white-text">
-                            <label for="icon_prefix" class="white-text">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="mdi-communication-email prefix white-text"></i>
-                            <input id="icon_email" name="email" type="email" class="validate white-text">
-                            <label for="icon_email" class="white-text">Email-id</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="mdi-editor-mode-edit prefix white-text"></i>
-                            <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
-                            <label for="icon_prefix2" class="white-text">Message</label>
-                        </div>
-                        <div class="col offset-s7 s5">
-                            <button class="btn waves-effect waves-light red darken-1" type="submit">Submit
-                                <i class="mdi-content-send right white-text"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">joashpereira.com</h5>
-                <ul>
-                    <li><a class="white-text" href="http://www.joashpereira.com/">Home</a></li>
-                    <li><a class="white-text" href="http://www.joashpereira.com/blog">Blog</a></li>
-                </ul>
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Social</h5>
+            <div class="col l4 s12">
+                <h5 class="white-text">Redes sociales</h5>
                 <ul>
                     <li>
                         <a class="white-text" href="https://www.behance.net/joashp">
@@ -370,6 +335,34 @@
                         </a>
                     </li>
                 </ul>
+            </div>
+            <div class="card blue-grey lighten-5">
+                <div class="col l12 s12">
+                    <form class="col s12" action="contact.php" method="post">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="mdi-action-account-circle prefix white-text"></i>
+                                <input id="icon_prefix" name="name" type="text" class="validate white-text">
+                                <label for="icon_prefix" class="white-text">Nombre</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="mdi-communication-email prefix white-text"></i>
+                                <input id="icon_email" name="email" type="email" class="validate white-text">
+                                <label for="icon_email" class="white-text">Correo electrónico</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <i class="mdi-editor-mode-edit prefix white-text"></i>
+                                <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
+                                <label for="icon_prefix2" class="white-text">Mensaje</label>
+                            </div>
+                            <div class="col offset-s7 s5">
+                                <button class="btn waves-effect waves-light red darken-1" type="submit">Submit
+                                    <i class="mdi-content-send right white-text"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
