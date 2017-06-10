@@ -23,7 +23,7 @@
 
 <!--Navigation-->
  <div class="navbar-fixed">
-    <nav id="nav_f" class="default_color" role="navigation">
+    <nav id="nav_f" class="indigo lighten-3" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
             <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">MD Template</a>
@@ -50,11 +50,11 @@
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
             <span>I Love</span> 
-            <span class="cd-words-wrapper waiting">
-                <b class="is-visible">creating</b>
+           <span class="cd-words-wrapper waiting">
+               <!--  <b class="is-visible">creating</b>
                 <b>designing</b>
-                <b>developing</b>
-            </span>
+                <b>developing</b>-->
+            </span> 
         </h1>
     </div>
 </div>
