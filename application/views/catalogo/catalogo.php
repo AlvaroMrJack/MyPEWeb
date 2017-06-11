@@ -9,6 +9,7 @@
     <!-- CSS  -->
     <link href="<?= base_url('resources/min/plugin-min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?= base_url('resources/min/custom-min.css') ?>" type="text/css" rel="stylesheet" >
+    <link href="<?= base_url('resources/js/pnotify.custom.min.css') ?>" type="text/css" rel="stylesheet" >
 </head>
 <body id="top" class="scrollspy">
 
@@ -23,7 +24,7 @@
 
 <!--Navigation-->
  <div class="navbar-fixed">
-    <nav id="nav_f" class="indigo lighten-3" role="navigation">
+    <nav id="nav_f" class=" blue accent-2" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
             <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">MD Template</a>
@@ -49,11 +50,11 @@
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
-            <span>I Love</span> 
+            <span>MyPEWeb</span> 
            <span class="cd-words-wrapper waiting">
-               <!--  <b class="is-visible">creating</b>
-                <b>designing</b>
-                <b>developing</b>-->
+                 <b class="is-visible">Inacap</b>
+                <b>2017</b>
+                <b>Informática</b>
             </span> 
         </h1>
     </div>
@@ -201,7 +202,7 @@
     <div class="container">
         <h2 class="header text_b"> Our Team </h2>
         <div class="row">
-            <div class="col s12 m3">
+            <div id="perfilFalsh" class="col s12 m3">
                 <div class="card card-avatar">
                     <div class="waves-effect waves-block waves-light">
                         <img class="activator" src="<?= base_url('resources/img/avatar1.png')?>">
@@ -338,7 +339,7 @@
             </div>
             <div class="card blue-grey lighten-5">
                 <div class="col l12 s12">
-                    <form class="col s12" action="contact.php" method="post">
+                    <form class="col s12" action="#" method="post">
                         <div class="row">
                             <div class="input-field col s6">
                                 <i class="mdi-action-account-circle prefix white-text"></i>
@@ -356,7 +357,7 @@
                                 <label for="icon_prefix2" class="white-text">Mensaje</label>
                             </div>
                             <div class="col offset-s7 s5">
-                                <button class="btn waves-effect waves-light red darken-1" type="submit">Submit
+                                <button id="btnContacto" class="btn waves-effect waves-light red darken-1" type="submit">Enviar
                                     <i class="mdi-content-send right white-text"></i>
                                 </button>
                             </div>
@@ -377,6 +378,18 @@
     <!--  Scripts-->
     <script src="<?= base_url('resources/min/plugin-min.js')?>"></script>
     <script src="<?= base_url('resources/min/custom-min.js')?>"></script>
-
+    <script src="<?= base_url('resources/js/pnotify.custom.min.js')?>"></script>
+    <script type="text/javascript" charset="utf-8">
+        $( "#perfilFalsh" ).click(function() {
+            pNotify = new PNotify({
+                title: 'Flash',
+                text: 'Él es flash',
+                type: 'error',
+                hide: false,
+                icon: "fa fa-bolt"
+            });
+            pNotify.open();
+        });
+    </script>
     </body>
 </html>
