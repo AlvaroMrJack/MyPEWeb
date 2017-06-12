@@ -27,7 +27,7 @@
     <nav id="nav_f" class=" blue accent-2" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-            <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">Inacap Template</a>
+            <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">Inacap :D Template</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#productos">Productos</a></li>
