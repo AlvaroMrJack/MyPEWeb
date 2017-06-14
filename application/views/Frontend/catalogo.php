@@ -1,8 +1,3 @@
-<?php 
-var_dump($config);
-exit();
-
- ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +10,7 @@ exit();
     <link href="<?= base_url('resources/min/plugin-min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?= base_url('resources/min/custom-min.css') ?>" type="text/css" rel="stylesheet" >
     <link href="<?= base_url('resources/js/pnotify.custom.min.css') ?>" type="text/css" rel="stylesheet" >
+    <link href="<?= base_url('resources/css/style.css') ?>" type="text/css" rel="stylesheet" >
 </head>
 <body id="top" class="scrollspy">
 
@@ -29,6 +25,20 @@ exit();
 
 <!--Navigation-->
  <div class="navbar-fixed">
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#!">uno</a></li>
+    <li><a href="#!">dos</a></li>
+    <li class="divider"></li>
+    <li><a class="dropdown-button" href="#!" data-activates="secondDRP">dropdown</a></li>
+  </ul>
+
+  <ul id='secondDRP' class='dropdown-content secondDropDown'>
+    <li><a class="truncate" href="#!">drop 1</a></li>
+    <li><a class="truncate" href="#!">drop 2</a></li>
+    <li><a class="truncate" href="#!">drop 3</a></li>
+  </ul>
+
     <nav id="nav_f" class=" blue accent-2" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
@@ -38,6 +48,9 @@ exit();
                     <li><a href="#productos">Productos</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contacto">Contacto</a></li>
+                    <li>
+                        <a class='dropdown-button' href='#' data-activates='dropdown1'>Drop Me!</a>
+                    </li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
                     <li><a href="#inicio">Inicio</a></li>
@@ -342,33 +355,31 @@ exit();
                     </li>
                 </ul>
             </div>
-            <div class="card blue-grey lighten-5">
-                <div class="col l12 s12">
-                    <form class="col s12" action="#" method="post">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <i class="mdi-action-account-circle prefix white-text"></i>
-                                <input id="icon_prefix" name="name" type="text" class="validate white-text">
-                                <label for="icon_prefix" class="white-text">Nombre</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <i class="mdi-communication-email prefix white-text"></i>
-                                <input id="icon_email" name="email" type="email" class="validate white-text">
-                                <label for="icon_email" class="white-text">Correo electrónico</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="mdi-editor-mode-edit prefix white-text"></i>
-                                <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
-                                <label for="icon_prefix2" class="white-text">Mensaje</label>
-                            </div>
-                            <div class="col offset-s7 s5">
-                                <button id="btnContacto" class="btn waves-effect waves-light red darken-1" type="submit">Enviar
-                                    <i class="mdi-content-send right white-text"></i>
-                                </button>
-                            </div>
+            <div class="col l8 s12">
+                <form class="col s12" action="#" method="post">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-account-circle prefix white-text"></i>
+                            <input id="icon_prefix" name="name" type="text" class="validate white-text">
+                            <label for="icon_prefix" class="white-text">Nombre</label>
                         </div>
-                    </form>
-                </div>
+                        <div class="input-field col s6">
+                            <i class="mdi-communication-email prefix white-text"></i>
+                            <input id="icon_email" name="email" type="email" class="validate white-text">
+                            <label for="icon_email" class="white-text">Correo electrónico</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="mdi-editor-mode-edit prefix white-text"></i>
+                            <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
+                            <label for="icon_prefix2" class="white-text">Mensaje</label>
+                        </div>
+                        <div class="col offset-s7 s5">
+                            <button id="btnContacto" class="btn waves-effect waves-light red darken-1" type="submit">Enviar
+                                <i class="mdi-content-send right white-text"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -394,6 +405,19 @@ exit();
                 icon: "fa fa-bolt"
             });
             pNotify.open();
+        });
+
+        $(document).ready(function() {
+            $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: true, // Does not change width of dropdown to that of the activator
+                hover: true, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'left' // Displays dropdown with edge aligned to the left of button
+                }
+            );
         });
     </script>
     </body>

@@ -263,3 +263,17 @@ nav a.button-collapse {
 footer.page-footer {
     margin-top: 0px !important;
 }
+
+/*nuevo estilo dropdown*/
+
+.dropdown-content {
+    min-width: 0;
+    min-height: 0;
+  overflow: visible !important;
+}
+
+.secondDropDown {
+  /*adjust by your needs*/
+    margin-left: 119px !important;
+    margin-top: -20px !important;
+}

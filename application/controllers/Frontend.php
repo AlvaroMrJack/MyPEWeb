@@ -44,8 +44,7 @@ $this->load->database();
 		foreach ($data['categoryParent'] as $key => $value) {
 			$data['subCat'][$key->cat_id]=$this->cat->findByParent($key->cat_id);
 		}
-		$data['product']=$this->prod->findByCatId($id);	
-		$data['product']=$this->prod->findAllActivados();
+		$data['product']=$this->prod->findByCatIdAct($id);
 
 		foreach ($data['product'] as $key => $value) {
 			$data['multimedia'][$key->pro_id]=$this->mul->findByProId($key->pro_id);

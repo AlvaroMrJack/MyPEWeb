@@ -107,10 +107,19 @@ public function findAll(){
             return $pro; 
          }
     return false;
+  }    public function findByCatIdAct($id){
+    $query = $this ->db-> get_where('mypeweb_product',array('pro_cat_id'=>$id, 'pro_status'=>1));
+   if($query -> num_rows() >= 1)
+         {
+            $row = $query->row_object();
+            $pro=$this->create($row);
+            return $pro; 
+         }
+    return false;
   }
 
  public function findAllActivados(){
-  $result=array();  
+  $result=array();
   $this->db->select('*');
   $this->db->from('mypeweb_product');
   $this->db->where('pro_status',1);
