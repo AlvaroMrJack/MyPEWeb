@@ -98,6 +98,16 @@ public function findAll(){
     return false;
   }
 
+    public function findByCatId($id){
+    $query = $this ->db-> get_where('mypeweb_product',array('pro_cat_id'=>$id));
+   if($query -> num_rows() >= 1)
+         {
+            $row = $query->row_object();
+            $pro=$this->create($row);
+            return $pro; 
+         }
+    return false;
+  }
 
  public function findAllActivados(){
   $result=array();  

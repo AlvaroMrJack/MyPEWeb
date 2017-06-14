@@ -105,6 +105,20 @@ public function findAll(){
     return false;
   }
 
+   public function findAllParentActivados(){
+  $result=array();  
+  $this->db->select('*');
+  $this->db->from('mypeweb_category');
+  $this->db->where('cat_parent',null);
+  $this->db->where('cat_status',1);
+  $this->db->order_by("cat_position", "asc");
+  $consulta = $this->db->get();
+    foreach ($consulta->result() as $row) {
+    $result[] = $this->create($row);
+  }
+  return $result;
+}
+
  public function findAllActivados(){
   $result=array();  
   $this->db->select('*');
