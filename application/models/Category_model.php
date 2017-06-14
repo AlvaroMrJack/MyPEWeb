@@ -105,6 +105,17 @@ public function findAll(){
     return false;
   }
 
+    public function findByParentAct($id){
+    $query = $this ->db-> get_where('mypeweb_category',array('cat_parent'=>$id, 'cat_status'=>1));
+   if($query -> num_rows() >= 1)
+         {
+            $row = $query->row_object();
+            $cat=$this->create($row);
+            return $cat; 
+         }
+    return false;
+  }
+
    public function findAllParentActivados(){
   $result=array();  
   $this->db->select('*');

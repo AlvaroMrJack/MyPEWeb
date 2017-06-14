@@ -2,7 +2,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Configuration_Model extends CI_Model {
+class Config_Model extends CI_Model {
 
 public function __construct()
 {
@@ -30,7 +30,7 @@ public function get($attr){
 }
 
 public function create($row){
-  $configuration =  new Configuration_Model();
+  $configuration =  new Config_Model();
   foreach ($row as $key => $value)
     {
       $configuration->_columns[$key] = $value;

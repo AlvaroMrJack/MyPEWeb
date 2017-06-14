@@ -1,3 +1,8 @@
+<?php 
+var_dump($config);
+exit();
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
