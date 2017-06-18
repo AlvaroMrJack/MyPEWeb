@@ -31,6 +31,7 @@ $this->load->database();
 
 	public function categoria($id)
 	{
+		$this->load->database();
 		$this->load->model('Category_model', 'cat');
 		$this->load->model('Config_model', 'conf');
 		$this->load->model('Multimedia_model', 'mul');
