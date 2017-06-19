@@ -13,48 +13,48 @@
 {# Navigation #}
  <div class="navbar-fixed">
   {#  Dropdown Structure  #}
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">uno</a></li>
-    <li><a href="#!">dos</a></li>
-    <li class="divider"></li>
-    <li><a class="dropdown-button" href="#!" data-activates="secondDRP">dropdown</a></li>
+
+  <ul id='dropdown1' class='dropdown-content {{ navbarColor }}'>
+    <li><a href="#!" style="color: #{{ colorNavbar }};">uno</a></li>
+    <li><a href="#!" style="color: #{{ colorNavbar }};">dos</a></li>
+    <li><a class="dropdown-button {{ navbarColor }}" style="color: #{{ colorNavbar }};" data-activates="secondDRP1">dropdown</a></li>
   </ul>
 
   <ul id='secondDRP1' class='dropdown-content secondDropDown'>
-    <li><a class="truncate" href="#!">drop 1</a></li>
-    <li><a class="truncate" href="#!">drop 2</a></li>
-    <li><a class="truncate" href="#!">drop 3</a></li>
+    <li><a class="truncate {{ navbarColor }}" style="color: #{{ colorNavbar }};" style="color: #{{ colorNavbar }};">drop 1</a></li>
+    <li><a class="truncate {{ navbarColor }}" style="color: #{{ colorNavbar }};" style="color: #{{ colorNavbar }};">drop 2</a></li>
+    <li><a class="truncate {{ navbarColor }}" style="color: #{{ colorNavbar }};" style="color: #{{ colorNavbar }};">drop 3</a></li>
   </ul>
 
   {#  Dropdown Structure  #}
   <ul id='dropdown2' class='dropdown-content'>
-    <li><a href="#!">uno</a></li>
-    <li><a href="#!">dos</a></li>
+    <li><a href="#!" style="color: #{{ colorNavbar }};">uno</a></li>
+    <li><a href="#!" style="color: #{{ colorNavbar }};">dos</a></li>
     <li class="divider"></li>
     <li><a class="dropdown-button" href="#!" data-activates="secondDRP2">dropdown</a></li>
   </ul>
 
   <ul id='secondDRP2' class='dropdown-content secondDropDown'>
-    <li><a class="truncate" href="#!">drop 1</a></li>
-    <li><a class="truncate" href="#!">drop 2</a></li>
-    <li><a class="truncate" href="#!">drop 3</a></li>
+    <li><a class="truncate" href="#!" style="color: #{{ colorNavbar }};">drop 1</a></li>
+    <li><a class="truncate" href="#!" style="color: #{{ colorNavbar }};">drop 2</a></li>
+    <li><a class="truncate" href="#!" style="color: #{{ colorNavbar }};">drop 3</a></li>
   </ul>
 
-    <nav id="nav_f" class=" blue accent-2" role="navigation">
+    <nav id="nav_f" class="{{ navbarColor }}" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-            <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">{{ logo|title }}</a>
+            <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo" style="color: #{{ colorLogo }};">{{ logo|title }}</a>
                 <ul class="right hide-on-med-and-down">
                     {% for navbar in categories_navbar %}
-                    <li><a href="#{{ navbar }}">{{ navbar|title }}</a></li>
+                    <li><a href="#{{ navbar }}" style="color: #{{ colorNavbar }};">{{ navbar|title }}</a></li>
                     {% endfor %}
                     <li>
-                        <a class='dropdown-button' href='#' data-activates='dropdown1'>Drop Me!</a>
+                        <a class='dropdown-button' href='#' data-activates='dropdown1' style="color: #{{ colorNavbar }};">Drop Me!</a>
                     </li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
                     {% for navbar in categories_navbar %}
-                    <li><a href="{{ navbar }}">{{ navbar|title }}</a></li>
+                    <li><a href="#{{ navbar }}">{{ navbar|title }}</a></li>
                     {% endfor %}
                     <li>
                         <a class='dropdown-button' href='#' data-activates='dropdown2'>Drop Me!</a>
@@ -67,12 +67,12 @@
 </div>
 
 {# Hero #}
-<div class="section no-pad-bot" id="index-banner">
+<div class="section no-pad-bot" id="index-banner" style="background: #{{ indexBanner }};">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
             <span>MyPEWeb</span> 
            <span class="cd-words-wrapper waiting">
-                 <b class="is-visible">Inacap</b>
+                <b class="is-visible">Inacap</b>
                 <b>2017</b>
                 <b>Informática</b>
             </span> 
@@ -97,11 +97,13 @@
                 {% for icons in icons_Caption %}
                     <div  class="col s12 m4 l4 hoverable">
                         <div class="center promo promo-example">
-                            <i class="{{ icons }}"></i>
+                            <i class="{{ icons }}" style="color: #{{ colorIcon }};"></i>
                             {% for caption in promo_captions %}
                             <h5 class="promo-caption">{{ caption }}</h5>
                             {% endfor %}
-                            <p class="light center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+                            {% for text in text_caption %}
+                            <p class="light center">{{ text }}</p>
+                            {% endfor %}
                         </div>
                     </div>
                 {% endfor %}
@@ -112,7 +114,7 @@
 {# productos #}
 <div class="section scrollspy" id="productos">
     <div class="container">
-        <h2 class="header text_b">Productos </h2>
+        <h2 class="header" style="color: #{{ product_header.color_p_h }};" >{{ product_header.content_p_h|title }} </h2>
         <div class="row">
             <div class="col s12 m4 l4">
                 <div class="card">

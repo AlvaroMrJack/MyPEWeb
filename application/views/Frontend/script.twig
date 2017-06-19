@@ -26,5 +26,42 @@
                 }
             );
         });
+
+
+        $( "#sendMail" ).click(function() {
+
+            var name = $("#form_name").val();
+            var email = $("#form_email").val();
+            var message = $("#msg_text").val();
+
+            $.ajax({
+                method: "POST",
+                url: "<?=site_url('/frontend_twig/sendMail')?>",
+                data: {"name": name, "email": email, "message": message},
+                datatype: 'json',
+                success: function(response){
+                    alert(name);
+                    if (response.msj == 0) {
+                        pNotifyMail = new PNotify({
+                            title: 'Correo no enviado',
+                            text: 'Su mensaje no fue enviado correctamente, intente nuevamente.',
+                            type: 'error',
+                            hide: false,
+                            icon: "fa fa-error"
+                        });
+                        pNotifyMail.open();
+                    }else{
+                        pNotifyMail = new PNotify({
+                            title: 'Correo enviado',
+                            text: 'Su mensaje fue enviado correctamente!.',
+                            type: 'success',
+                            hide: false,
+                            icon: "fa fa-error"
+                        });
+                        pNotifyMail.open();
+                    }
+                }
+            });
+        });
     </script>
 </html>
