@@ -19,10 +19,10 @@ private  $_columns  =  array(
 'con_logo' => '',
 'con_video' => '',
 'con_nombrefantasia' => '',
+'con_fontcolor' => '',
 'con_fontstyle' => '',
 'con_fontsize' => 0,
 'con_status' => 1
-
 );
 
 public function get($attr){

@@ -129,9 +129,11 @@ class Frontend_twig extends CI_Controller {
 
 	public function sendMail(){
 
-		$validarEnvio = $_POST['name'];
-
-		if ($validarEnvio == 'alvaro') {
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$text = $_POST['message'];
+		$val=null;
+		if (isset($name) && isset($email) && iseet($text)) {
 	        $val = 0;
 	      }else{
 	        $val = 1;

@@ -20,7 +20,7 @@ private  $_columns  =  array(
 'pro_status' => 1,
 'pro_cat_id' => 0,
 'pro_discount' => 0,
-'Upro_total' => 0
+'pro_total' => 0
 
 );
 

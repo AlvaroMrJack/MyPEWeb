@@ -13,7 +13,8 @@ private  $_columns  =  array(
 'adm_id' => 0,
 'adm_user' => '',
 'adm_pass' => '',
-'adm_name' => ''
+'adm_name' => '',
+'adm_photo' => ''
 );
 
 public function get($attr){

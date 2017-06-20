@@ -70,11 +70,11 @@
 <div class="section no-pad-bot" id="index-banner" style="background: #{{ indexBanner }};">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
-            <span>MyPEWeb</span> 
+            <span>Nombre empresa</span> 
            <span class="cd-words-wrapper waiting">
-                <b class="is-visible">Inacap</b>
-                <b>2017</b>
-                <b>Informática</b>
+                <b class="is-visible">palabra 1</b>
+                <b>palabra 2</b>
+                <b>palabra 3</b>
             </span> 
         </h1>
     </div>
@@ -94,19 +94,28 @@
                 </h2>
                 {% endif %}
             </div>
-                {% for icons in icons_Caption %}
-                    <div  class="col s12 m4 l4 hoverable">
-                        <div class="center promo promo-example">
-                            <i class="{{ icons }}" style="color: #{{ colorIcon }};"></i>
-                            {% for caption in promo_captions %}
-                            <h5 class="promo-caption">{{ caption }}</h5>
-                            {% endfor %}
-                            {% for text in text_caption %}
-                            <p class="light center">{{ text }}</p>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
+            <div  class="col s12 m4 l4 hoverable">
+                <div class="center promo promo-example">
+                    <i class="mdi-image-flash-on"></i>
+                    <h5 class="promo-caption">Misión</h5>{#mision,vision,objetivo#}
+                    <p class="light center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nisi, nulla magni, accusamus beatae molestiae atque delectus autem ipsa sequi. Sapiente deserunt beatae asperiores totam nulla iure facilis pariatur numquam.</p>
+                </div>
+            </div>
+            <div  class="col s12 m4 l4 hoverable">
+                <div class="center promo promo-example">
+                    <i class="mdi-social-group"></i>
+                    <h5 class="promo-caption">Visión</h5>{#mision,vision,objetivo#}
+                    <p class="light center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut perferendis iste eius perspiciatis unde maxime fugiat itaque, nisi iusto cumque. Consectetur amet natus dolor saepe dolores, inventore laborum libero animi.</p>
+                </div>
+            </div>
+            <div  class="col s12 m4 l4 hoverable">
+                <div class="center promo promo-example">
+                    <i class="mdi-hardware-desktop-windows"></i>
+                    <h5 class="promo-caption">Objetivo</h5>{#mision,vision,objetivo#}
+                    <p class="light center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam illum aspernatur veritatis, in omnis eligendi consequatur, recusandae praesentium eum placeat eius, deleniti suscipit debitis voluptatibus dolorum repellendus libero harum vitae.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -114,7 +123,7 @@
 {# productos #}
 <div class="section scrollspy" id="productos">
     <div class="container">
-        <h2 class="header" style="color: #{{ product_header.color_p_h }};" >{{ product_header.content_p_h|title }} </h2>
+        <h2 class="header text_b">{{ product_header.content_p_h|title }} </h2>
         <div class="row">
             <div class="col s12 m4 l4">
                 <div class="card">
@@ -122,12 +131,12 @@
                         <img class="activator" src="<?= base_url('resources/img/project1.jpg')?>">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
+                        <span class="card-title activator grey-text text-darken-4">{{ product_name }} <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a>Precio: {{ product_price }}</a></p>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
+                        <span class="card-title grey-text text-darken-4">Descripción: <i class="mdi-navigation-close right"></i></span>
+                        <p>{{ product_description }}</p>
                     </div>
                 </div>
             </div>
@@ -137,12 +146,12 @@
                         <img class="activator" src="<?= base_url('resources/img/project2.jpeg')?>">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
+                        <span class="card-title activator grey-text text-darken-4">{{ product_name }} <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a>Precio: {{ product_price }}</a></p>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
+                        <span class="card-title grey-text text-darken-4">Descripción: <i class="mdi-navigation-close right"></i></span>
+                        <p>{{ product_description }}</p>
                     </div>
                 </div>
             </div>
@@ -152,57 +161,12 @@
                         <img class="activator" src="<?= base_url('resources/img/project3.png')?>">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
+                        <span class="card-title activator grey-text text-darken-4">{{ product_name }} <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a>Precio: {{ product_price }}</a></p>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="<?= base_url('resources/img/project4.jpg')?>">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="<?= base_url('resources/img/project5.png')?>">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="<?= base_url('resources/img/project6.jpeg')?>">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
+                        <span class="card-title grey-text text-darken-4">Descripción: <i class="mdi-navigation-close right"></i></span>
+                        <p>{{ product_description }}</p>
                     </div>
                 </div>
             </div>
@@ -218,106 +182,18 @@
 {# Team #}
 <div class="section scrollspy" id="team">
     <div class="container">
-        <h2 class="header text_b"> Our Team </h2>
+        <h2 class="header text_b"> Nuestro equipo </h2>
         <div class="row">
-            <div id="perfilFalsh" class="col s12 m3">
+            <div id="perfilFalsh" class="col s12 m4">
                 <div class="card card-avatar">
                     <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="<?= base_url('resources/img/avatar1.png')?>">
+                        <img class="activator" src="<?= base_url('resources/img/{{ team_foto }}')?>">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Flash <br/>
-                            <small><em><a class="red-text text-darken-1" href="#">CEO</a></em></small></span>
+                        <span class="card-title activator grey-text text-darken-4">{{ team_name }} <br/>
+                            <small><em><a class="red-text text-darken-1" href="#">{{ team_cargo }}</a></em></small></span>
                         <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="<?= base_url('resources/img/avatar2.png')?>">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Cat Woman<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Designer</a></em></small>
-                        </span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="<?= base_url('resources/img/avatar3.png')?>">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">
-                            Capt. America <br/>
-                            <small><em><a class="red-text text-darken-1" href="#">CMO</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="<?= base_url('resources/img/avatar4.png')?>">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Robin<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
+                            {{ team_description}}
                         </p>
                     </div>
                 </div>

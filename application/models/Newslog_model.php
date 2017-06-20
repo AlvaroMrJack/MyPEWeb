@@ -13,8 +13,9 @@ private  $_columns  =  array(
 'log_id' => 0,
 'log_datesystem' => '',
 'log_cus_id' => 0,
-'log_new_id' => 0
-
+'log_new_id' => 0,
+'log_type' => 0,
+'log_state' => 1
 );
 
 public function get($attr){
