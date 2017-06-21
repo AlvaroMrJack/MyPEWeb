@@ -1,5 +1,3 @@
-<?php ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,52 +27,72 @@
  <div class="navbar-fixed">
   <!--  Dropdown Structure  -->
 
-  <ul id='' class=''>
-    <li><a class="dropdown-button {{ navbarColor }}" style="color: #{{ colorNavbar }};" data-activates="secondDRP1">Categorias</a></li>
-  </ul>
 
-  <ul id='dropdown1' class='dropdown-content {{ navbarColor }}'>
-  <?php foreach ($categoryParent as $key): ?>
-    <li><a class="truncate {{ navbarColor }}" style="color: #{{ colorNavbar }};" style="color: #{{ colorNavbar }};"><?=$key->get('cat_name')?></a></li>
-      
-<?php foreach ($subCat as $key2):?>
 
-      <ul id='secondDRP1' class='dropdown-content secondDropDown'>
-<?php if ($key2->get('cat_parent')==$key->get('cat_id')): ?>
-    
-    <li><a href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>" style="color: #{{ colorNavbar }};"><?=$key2->get('cat_name')?></a></li>
+  <ul id='dropdown1' class='dropdown-content'>
+      <?php foreach ($categoryParent as $key): ?>
 
-<?php endif ?>
-  </ul>
-    
-<?php endforeach ?>
+        <li>
+            <a class="truncate"><?=$key->get('cat_name')?></a>
+        </li>
+          
+        <?php foreach ($subCat as $key2):?>
 
-  <?php endforeach ?>
+        <ul id='secondDRP1' class='dropdown-content secondDropDown'>
+            <?php if ($key2->get('cat_parent')==$key->get('cat_id')): ?>
+                
+            <li>
+                <a href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>">
+                    <?=$key2->get('cat_name')?>
+                </a>
+            </li>
+
+            <?php endif ?>
+        </ul>
+            
+        <?php endforeach ?>
+
+      <?php endforeach ?>
   </ul>
 
 
   <ul id='secondDRP2' class='dropdown-content secondDropDown'>
-    <li><a class="truncate" href="#!" style="color: #{{ colorNavbar }};">drop 1</a></li>
-    <li><a class="truncate" href="#!" style="color: #{{ colorNavbar }};">drop 2</a></li>
-    <li><a class="truncate" href="#!" style="color: #{{ colorNavbar }};">drop 3</a></li>
+    <li><a class="truncate" href="#!">drop 1</a></li>
+    <li><a class="truncate" href="#!">drop 2</a></li>
+    <li><a class="truncate" href="#!">drop 3</a></li>
   </ul>
 
     <nav id="nav_f" class="{{ navbarColor }}" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-            <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo" style="color: #{{ colorLogo }};">{{ logo|title }}</a>
+            <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">Empresa</a>
                 <ul class="right hide-on-med-and-down">
-                    {% for navbar in categories_navbar %}
-                    <li><a href="#{{ navbar }}" style="color: #{{ colorNavbar }};">{{ navbar|title }}</a></li>
-                    {% endfor %}
                     <li>
-                        <a class='dropdown-button' href='#' data-activates='dropdown1' style="color: #{{ colorNavbar }};">Categorias</a>
+                        <a href="#inicio">Inicio</a>
                     </li>
+
+                    <li>
+                        <a class='dropdown-button' href='#productos' data-activates='dropdown1'>Productos</a>
+                    </li>
+
+                    <li>
+                        <a href="#team">
+                            Equipo
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#contacto">
+                            Contacto
+                        </a>
+                    </li>
+
+
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
-                    {% for navbar in categories_navbar %}
-                    <li><a href="#{{ navbar }}">{{ navbar|title }}</a></li>
-                    {% endfor %}
+                    <li>
+                        <a href="#inicio">Inicio</a>
+                    </li>
                     <li>
                         <a class='dropdown-button' href='#' data-activates='dropdown2'>Drop Me!</a>
                     </li>
@@ -86,7 +104,7 @@
 </div>
 
 <!-- Hero -->
-<div class="section no-pad-bot" id="index-banner" style="background: #{{ indexBanner }};">
+<div class="section no-pad-bot" id="index-banner">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
             <span>Nombre empresa</span> 
@@ -98,7 +116,6 @@
         </h1>
     </div>
 </div>
-[
 <!-- inicio and service -->
 <div id="inicio" class="section scrollspy">
     <div class="container">
