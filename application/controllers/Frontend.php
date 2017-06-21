@@ -44,9 +44,10 @@ class Frontend extends CI_Controller {
 
 	public function categoria($idcat=0)
 	{
-		$data['config']=$this->conf->findAll();
+		$data['config']=$this->conf->findAllActivados();
 		$data['categoryParent']=$this->cat->findAllParentActivados();
 		$data['subCat']=array();
+
 		foreach ($data['categoryParent'] as $key) {
 			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
 		}

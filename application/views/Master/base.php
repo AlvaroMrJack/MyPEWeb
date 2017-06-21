@@ -34,7 +34,7 @@
         <?php foreach ($categoryParent as $key): ?>
 
         <li>
-            <a style="font-size: 14px;" class="dropdown-button" data-activates='secondDRP1'><?=$key->get('cat_name')?></a>
+            <a style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key->get('cat_id'))?>" class="dropdown-button" data-activates='secondDRP1'><?=$key->get('cat_name')?></a>
         </li>
           
         <?php endforeach ?>
@@ -64,7 +64,7 @@
         <?php foreach ($categoryParent as $key): ?>
 
         <li>
-            <a style="font-size: 14px;" class="dropdown-button" data-activates='secondDRP2'><?=$key->get('cat_name')?></a>
+            <a style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key->get('cat_id'))?>" class="dropdown-button" data-activates='secondDRP2'><?=$key->get('cat_name')?></a>
         </li>
           
         <?php endforeach ?>
@@ -91,7 +91,7 @@
     <nav id="nav_f" style="background: <?= $catego->get('con_navbar') ?>" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-            <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">Empresa</a>
+            <a href="<?= base_url('resources/img/'.$catego->get('con_logo')); ?>" id="logo-container" class="brand-logo">Empresa</a>
 
                 <ul class="right hide-on-med-and-down">
                     <li>
