@@ -36,7 +36,7 @@ class Frontend extends CI_Controller {
 
 		$data['redes']=$this->redes->findAll();
 		$data['equipo']=$this->team->findAll();
-		$data['empresa']=$this->empresa->findAll();
+		$data['business']=$this->empresa->findAll();
 
 
 		$this->load->view('Master/base.php', $data);
@@ -44,30 +44,26 @@ class Frontend extends CI_Controller {
 
 	public function categoria($idcat=0)
 	{
-
-
 		$data['config']=$this->conf->findAll();
 		$data['categoryParent']=$this->cat->findAllParentActivados();
 		$data['subCat']=array();
 		foreach ($data['categoryParent'] as $key) {
 			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
 		}
+
+
 		$data['product']=$this->prod->findByCatIdAct($idcat);
 
 		if($data['product']!=false){
-		foreach ($data['product'] as $key) {
-			$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
+			foreach ($data['product'] as $key) {
+				$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
+			}
 		}
-}
 		$data['redes']=$this->redes->findAll();
 		$data['equipo']=$this->team->findAll();
-
+		$data['business']=$this->empresa->findAll();
 
 		$this->load->view('Master/base.php', $data);
-
-
-
-
 	}
 
 	public function sendMail(){
@@ -81,7 +77,9 @@ class Frontend extends CI_Controller {
 	      }else{
 	        $val = 0;
 	      }
-		$mail = new PHPMailer;
+		$this->output->set_content_type('application/json');
+	    $this->output->set_output(json_encode(array("msj" => $val )));
+		/*$mail = new PHPMailer;
 
 		//$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
@@ -104,20 +102,19 @@ class Frontend extends CI_Controller {
 		$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 		$mail->isHTML(true);                                  // Set email format to HTML
 
-		$mail->Subject = 'Here is the subject';
-		$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+		$mail->Subject = $name;
+		$mail->Body    = $message.'</b>';
+		$mail->AltBody = $email;
 
 		if(!$mail->send()) {
 		    echo 'Message could not be sent.';
 		    echo 'Mailer Error: ' . $mail->ErrorInfo;
 	        $this->output->set_content_type('application/json');
-	      	$this->output->set_output(json_encode(array("msj" =>$val )));
+	      	$this->output->set_output(json_encode(array("msj" =>0 )));
 		} else {
 		    $this->output->set_content_type('application/json');
-	      	$this->output->set_output(json_encode(array("msj" =>$val )));
-		}
-
+	      	$this->output->set_output(json_encode(array("msj" =>1 )));
+		}*/
 	}
 
 }

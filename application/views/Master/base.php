@@ -34,7 +34,7 @@
         <?php foreach ($categoryParent as $key): ?>
 
         <li>
-            <a class="dropdown-button" data-activates='secondDRP1'><?=$key->get('cat_name')?></a>
+            <a style="font-size: 14px;" class="dropdown-button" data-activates='secondDRP1'><?=$key->get('cat_name')?></a>
         </li>
           
         <?php endforeach ?>
@@ -46,7 +46,7 @@
         <?php if ($key2->get('cat_parent')==$key->get('cat_id')): ?>
             
         <li>
-            <a href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>">
+            <a style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>">
                 <?=$key2->get('cat_name')?>
             </a>
         </li>
@@ -56,11 +56,37 @@
         
     <?php endforeach ?>
 
-  <ul id='secondDRP2' class='dropdown-content secondDropDown'>
-    <li><a class="truncate" href="#!">drop 1</a></li>
-    <li><a class="truncate" href="#!">drop 2</a></li>
-    <li><a class="truncate" href="#!">drop 3</a></li>
-  </ul>
+
+
+
+
+	<ul id='dropdown2' class='dropdown-content'>
+        <?php foreach ($categoryParent as $key): ?>
+
+        <li>
+            <a style="font-size: 14px;" class="dropdown-button" data-activates='secondDRP2'><?=$key->get('cat_name')?></a>
+        </li>
+          
+        <?php endforeach ?>
+    </ul>
+
+    <?php foreach ($subCat as $key2):?>
+
+    <ul id='secondDRP2' class='dropdown-content'>
+        <?php if ($key2->get('cat_parent')==$key->get('cat_id')): ?>
+            
+        <li>
+            <a style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>">
+                <?=$key2->get('cat_name')?>
+            </a>
+        </li>
+
+        <?php endif ?>
+    </ul>
+        
+    <?php endforeach ?>
+
+
 
     <nav id="nav_f" style="background: <?= $catego->get('con_navbar') ?>" role="navigation">
         <div class="container">
@@ -69,7 +95,7 @@
 
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="#inicio">Inicio</a>
+                        <a href="#index-banner">Inicio</a>
                     </li>
 
                     <li>
@@ -88,11 +114,11 @@
 
                 <ul id="nav-mobile" class="side-nav">
                     <li>
-                        <a href="#inicio">Inicio</a>
+                        <a href="#index-banner">Inicio</a>
                     </li>
 
                     <li>
-                        <a class='dropdown-button' href='#productos' data-activates='dropdown1'>Productos</a>
+                        <a class='dropdown-button' href='#productos' data-activates='dropdown2'>Productos</a>
                     </li>
 
                     <li>
@@ -110,10 +136,10 @@
 </div>
 
 <!-- Hero -->
-<div class="section no-pad-bot" id="index-banner" style="background: <?= $catego->get('con_background') ?>">
+<div class="section no-pad-bot scrollspy" id="index-banner" style="background: <?= $catego->get('con_background') ?>">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
-            <span>Nombre empresa</span> 
+            <span>Empresa</span> 
            <span class="cd-words-wrapper waiting">
                 <b class="is-visible">palabra 1</b>
                 <b>palabra 2</b>
@@ -123,7 +149,7 @@
     </div>
 </div>
 <!-- inicio and service -->
-<?php foreach ($empresa as $emp): ?>
+<?php foreach ($business as $emp): ?>
 <div id="inicio" class="section scrollspy">
     <div class="container">
         <div class="row">
@@ -134,21 +160,21 @@
             </div>
             <div  class="col s12 m4 l4 hoverable">
                 <div class="center promo promo-example">
-                    <i class="mdi-image-flash-on"></i>
+                    <i class="mdi-image-flash-on" style="color: <?= $catego->get('con_navbar') ?>"></i>
                     <h5 class="promo-caption">Misión</h5><!--mision,vision,objetivo-->
                     <p class="light center"><?= $emp->get('emp_mision') ?></p>
                 </div>
             </div>
             <div  class="col s12 m4 l4 hoverable">
                 <div class="center promo promo-example">
-                    <i class="mdi-social-group"></i>
+                    <i class="mdi-social-group" style="color: <?= $catego->get('con_navbar') ?>"></i>
                     <h5 class="promo-caption">Visión</h5><!--mision,vision,objetivo-->
                     <p class="light center"><?= $emp->get('emp_vision') ?></p>
                 </div>
             </div>
             <div  class="col s12 m4 l4 hoverable">
                 <div class="center promo promo-example">
-                    <i class="mdi-hardware-desktop-windows"></i>
+                    <i class="mdi-hardware-desktop-windows" style="color: <?= $catego->get('con_navbar') ?>"></i>
                     <h5 class="promo-caption">Objetivo</h5><!--mision,vision,objetivo-->
                     <p class="light center"><?= $emp->get('emp_objetivo') ?></p>
                 </div>
@@ -212,7 +238,7 @@
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4"><?= $key->get('team_nom') ?> <br/>
-                            <small><em><a class="red-text text-darken-1" href="#"><?= $key->get('team_cargo') ?></a></em></small></span>
+                            <small><em><a style="color: <?= $catego->get('con_footer') ?>"><?= $key->get('team_cargo') ?></a></em></small></span>
                         <p>
                             <?= $key->get('team_desc') ?>
                         </p>
@@ -242,7 +268,7 @@
                 <h5 class="white-text">Contacto:</h5>
                 <ul>
                     <li>
-                        <span style="color: #fff;">+569 12345678</span>
+                        <span style="color: #fff;"><?= $catego->get('con_phonenumber') ?></span>
                     </li>
                 </ul>
             </div>
@@ -312,7 +338,6 @@
         var name = $("#form_name").val();
         var email = $("#form_email").val();
         var message = $("#msg_text").val();
-        alert(name);
 
         $.ajax({
             method: "POST",
