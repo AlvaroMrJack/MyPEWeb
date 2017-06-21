@@ -1,9 +1,10 @@
+<?php foreach ($config as $catego): ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="theme-color" content="#2196F3">
+    <meta name="theme-color" content="#">
     <title>Titulo</title>
 
     <link href="<?= base_url('resources/min/plugin-min.css') ?>" type="text/css" rel="stylesheet">
@@ -61,7 +62,7 @@
     <li><a class="truncate" href="#!">drop 3</a></li>
   </ul>
 
-    <nav id="nav_f" class="{{ navbarColor }}" role="navigation">
+    <nav id="nav_f" style="background: <?= $catego->get('con_navbar') ?>" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
             <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">Empresa</a>
@@ -100,7 +101,7 @@
 </div>
 
 <!-- Hero -->
-<div class="section no-pad-bot" id="index-banner">
+<div class="section no-pad-bot" id="index-banner" style="background: <?= $catego->get('con_background') ?>">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
             <span>Nombre empresa</span> 
@@ -150,7 +151,7 @@
 <!-- productos -->
 <div class="section scrollspy" id="productos">
     <div class="container">
-        <h2 class="header text_b">Productos </h2>
+        <h2 class="header text_b" style="color: <?= $catego->get('con_navbar') ?>">Productos </h2>
         <div class="row">
         <?php if ($product!=false): ?>
         <?php foreach ($product as $key0): ?>
@@ -190,7 +191,7 @@
 <!-- Team -->
 <div class="section scrollspy" id="team">
     <div class="container">
-        <h2 class="header text_b"> Nuestro equipo </h2>
+        <h2 class="header text_b" style="color: <?= $catego->get('con_navbar') ?>"> Nuestro equipo </h2>
         <div class="row">
             <?php foreach ($equipo as $key): ?>
             <div id="perfilFalsh" class="col s12 m4">
@@ -212,7 +213,7 @@
     </div>
 </div>
 
-<footer id="contacto" class="page-footer {{ footer_color }} scrollspy">
+<footer id="contacto" class="page-footer scrollspy" style="background: <?= $catego->get('con_footer') ?>">
     <div class="container">  
         <div class="row">
             <div class="col l4 s12">
@@ -260,7 +261,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-copyright {{ footer_color_end }}">
+    <div class="footer-copyright" style="background: <?= $catego->get('con_navbar') ?>">
         <div class="container">
             Creado por Clínica MyPE Inacap Renca <a class="white-text" href="http://www.inacap.cl"></a>. Gracias a  <a class="white-text" href="http://materializecss.com/">materializecss</a>
         </div>
@@ -336,3 +337,4 @@
     });
     </script>
 </html>
+<?php endforeach ?>

@@ -35,7 +35,7 @@ class Frontend extends CI_Controller {
 
 		$data['redes']=$this->redes->findAll();
 		$data['equipo']=$this->team->findAll();
-
+		
 
 		$this->load->view('Master/base.php', $data);
 	}
