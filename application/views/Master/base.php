@@ -29,32 +29,31 @@
 
 
 
-  <ul id='dropdown1' class='dropdown-content'>
-      <?php foreach ($categoryParent as $key): ?>
+    <ul id='dropdown1' class='dropdown-content'>
+        <?php foreach ($categoryParent as $key): ?>
 
         <li>
-            <a class="truncate"><?=$key->get('cat_name')?></a>
+            <a class="dropdown-button" data-activates='secondDRP1'><?=$key->get('cat_name')?></a>
         </li>
           
-        <?php foreach ($subCat as $key2):?>
-
-        <ul id='secondDRP1' class='dropdown-content secondDropDown'>
-            <?php if ($key2->get('cat_parent')==$key->get('cat_id')): ?>
-                
-            <li>
-                <a href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>">
-                    <?=$key2->get('cat_name')?>
-                </a>
-            </li>
-
-            <?php endif ?>
-        </ul>
-            
         <?php endforeach ?>
+    </ul>
 
-      <?php endforeach ?>
-  </ul>
+    <?php foreach ($subCat as $key2):?>
 
+    <ul id='secondDRP1' class='dropdown-content'>
+        <?php if ($key2->get('cat_parent')==$key->get('cat_id')): ?>
+            
+        <li>
+            <a href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>">
+                <?=$key2->get('cat_name')?>
+            </a>
+        </li>
+
+        <?php endif ?>
+    </ul>
+        
+    <?php endforeach ?>
 
   <ul id='secondDRP2' class='dropdown-content secondDropDown'>
     <li><a class="truncate" href="#!">drop 1</a></li>
@@ -66,6 +65,7 @@
         <div class="container">
             <div class="nav-wrapper">
             <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">Empresa</a>
+
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a href="#inicio">Inicio</a>
@@ -76,19 +76,15 @@
                     </li>
 
                     <li>
-                        <a href="#team">
-                            Equipo
-                        </a>
+                        <a href="#team">Equipo</a>
                     </li>
                     
                     <li>
-                        <a href="#contacto">
-                            Contacto
-                        </a>
+                        <a href="#contacto">Contacto</a>
                     </li>
-
-
                 </ul>
+
+
                 <ul id="nav-mobile" class="side-nav">
                     <li>
                         <a href="#inicio">Inicio</a>
