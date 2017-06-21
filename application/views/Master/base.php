@@ -90,8 +90,17 @@
                     <li>
                         <a href="#inicio">Inicio</a>
                     </li>
+
                     <li>
-                        <a class='dropdown-button' href='#' data-activates='dropdown2'>Drop Me!</a>
+                        <a class='dropdown-button' href='#productos' data-activates='dropdown1'>Productos</a>
+                    </li>
+
+                    <li>
+                        <a href="#team">Equipo</a>
+                    </li>
+                    
+                    <li>
+                        <a href="#contacto">Contacto</a>
                     </li>
                 </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
@@ -114,44 +123,46 @@
     </div>
 </div>
 <!-- inicio and service -->
+<?php foreach ($empresa as $emp): ?>
 <div id="inicio" class="section scrollspy">
     <div class="container">
         <div class="row">
             <div  class="col s12">
                 <h2 class="center header text_h2">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore eos suscipit laudantium incidunt blanditiis, ea est vitae tenetur natus laboriosam, amet labore molestiae debitis nam mollitia. Magni cum, nisi recusandae!
+                    <?= $emp->get('emp_descripcion') ?>
                 </h2>
             </div>
             <div  class="col s12 m4 l4 hoverable">
                 <div class="center promo promo-example">
                     <i class="mdi-image-flash-on"></i>
                     <h5 class="promo-caption">Misión</h5><!--mision,vision,objetivo-->
-                    <p class="light center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nisi, nulla magni, accusamus beatae molestiae atque delectus autem ipsa sequi. Sapiente deserunt beatae asperiores totam nulla iure facilis pariatur numquam.</p>
+                    <p class="light center"><?= $emp->get('emp_mision') ?></p>
                 </div>
             </div>
             <div  class="col s12 m4 l4 hoverable">
                 <div class="center promo promo-example">
                     <i class="mdi-social-group"></i>
                     <h5 class="promo-caption">Visión</h5><!--mision,vision,objetivo-->
-                    <p class="light center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut perferendis iste eius perspiciatis unde maxime fugiat itaque, nisi iusto cumque. Consectetur amet natus dolor saepe dolores, inventore laborum libero animi.</p>
+                    <p class="light center"><?= $emp->get('emp_vision') ?></p>
                 </div>
             </div>
             <div  class="col s12 m4 l4 hoverable">
                 <div class="center promo promo-example">
                     <i class="mdi-hardware-desktop-windows"></i>
                     <h5 class="promo-caption">Objetivo</h5><!--mision,vision,objetivo-->
-                    <p class="light center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam illum aspernatur veritatis, in omnis eligendi consequatur, recusandae praesentium eum placeat eius, deleniti suscipit debitis voluptatibus dolorum repellendus libero harum vitae.</p>
+                    <p class="light center"><?= $emp->get('emp_objetivo') ?></p>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
+<?php endforeach ?>
 
 <!-- productos -->
 <div class="section scrollspy" id="productos">
     <div class="container">
-        <h2 class="header text_b" style="color: <?= $catego->get('con_navbar') ?>">Productos </h2>
+        <h2 class="header text_b center-align" style="color: <?= $catego->get('con_navbar') ?>">Productos </h2>
         <div class="row">
         <?php if ($product!=false): ?>
         <?php foreach ($product as $key0): ?>
@@ -191,7 +202,7 @@
 <!-- Team -->
 <div class="section scrollspy" id="team">
     <div class="container">
-        <h2 class="header text_b" style="color: <?= $catego->get('con_navbar') ?>"> Nuestro equipo </h2>
+        <h2 class="header text_b center-align" style="color: <?= $catego->get('con_navbar') ?>"> Nuestro equipo </h2>
         <div class="row">
             <?php foreach ($equipo as $key): ?>
             <div id="perfilFalsh" class="col s12 m4">
@@ -253,7 +264,7 @@
                         <label for="icon_prefix2" class="white-text">Mensaje</label>
                     </div>
                     <div class="col offset-s7 s5">
-                        <button id="sendMail" class="btn waves-effect waves-light red darken-1">Enviar
+                        <button style="background: <?= $catego->get('con_navbar') ?>" id="sendMail" class="btn waves-effect">Enviar
                             <i class="mdi-content-send right white-text"></i>
                         </button>
                     </div>

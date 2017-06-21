@@ -13,6 +13,7 @@ class Frontend extends CI_Controller {
 		$this->load->model('Product_model', 'prod');
 		$this->load->model('Redes_model', 'redes');
 		$this->load->model('Team_model', 'team');
+		$this->load->model('Empresa_model', 'empresa');
 	}
 
 	public function index()
@@ -35,7 +36,8 @@ class Frontend extends CI_Controller {
 
 		$data['redes']=$this->redes->findAll();
 		$data['equipo']=$this->team->findAll();
-		
+		$data['empresa']=$this->empresa->findAll();
+
 
 		$this->load->view('Master/base.php', $data);
 	}
