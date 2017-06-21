@@ -34,7 +34,7 @@
         <?php foreach ($categoryParent as $key): ?>
 
         <li>
-            <a style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key->get('cat_id'))?>" class="dropdown-button" data-activates='secondDRP1'><?=$key->get('cat_name')?></a>
+            <a class="form_name" style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key->get('cat_id'))?>"><?=$key->get('cat_name')?></a>
         </li>
           
         <?php endforeach ?>
@@ -60,7 +60,7 @@
 
 
 
-	<ul id='dropdown2' class='dropdown-content'>
+    <ul id='dropdown2' class='dropdown-content'>
         <?php foreach ($categoryParent as $key): ?>
 
         <li>
@@ -99,7 +99,7 @@
                     </li>
 
                     <li>
-                        <a class='dropdown-button' href='<?= site_url('frontend/productos') ?>'>Productos</a><!--  data-activates='dropdown1' -->
+                        <a class='dropdown-button' href='<?= site_url('fontend/productos') ?>'>Productos</a><!--  data-activates='dropdown1' -->
                     </li>
 
                     <!-- <li>
@@ -118,7 +118,7 @@
                     </li>
 
                     <li>
-                        <a class='dropdown-button' href='<?= site_url('frontend/productos') ?>'>Productos</a>
+                        <a class='dropdown-button' href='<?= site_url('fontend/productos') ?>'>Productos</a>
                     </li>
 
                     <!-- <li>
@@ -147,49 +147,34 @@
         </h1>
     </div>
 </div>
-<!-- inicio and service -->
-<?php foreach ($business as $emp): ?>
-<div id="inicio" class="section scrollspy">
-    <div class="container">
-        <div class="row">
-            <div  class="col s12">
-                <h2 class="center header text_h2">
-                    <?= $emp->get('emp_descripcion') ?>
-                </h2>
-            </div>
-            <div  class="col s12 m4 l4 hoverable">
-                <div class="center promo promo-example">
-                    <i class="mdi-image-flash-on" style="color: <?= $catego->get('con_navbar') ?>"></i>
-                    <h5 class="promo-caption">Misión</h5><!--mision,vision,objetivo-->
-                    <p class="light center"><?= $emp->get('emp_mision') ?></p>
-                </div>
-            </div>
-            <div  class="col s12 m4 l4 hoverable">
-                <div class="center promo promo-example">
-                    <i class="mdi-social-group" style="color: <?= $catego->get('con_navbar') ?>"></i>
-                    <h5 class="promo-caption">Visión</h5><!--mision,vision,objetivo-->
-                    <p class="light center"><?= $emp->get('emp_vision') ?></p>
-                </div>
-            </div>
-            <div  class="col s12 m4 l4 hoverable">
-                <div class="center promo promo-example">
-                    <i class="mdi-hardware-desktop-windows" style="color: <?= $catego->get('con_navbar') ?>"></i>
-                    <h5 class="promo-caption">Objetivo</h5><!--mision,vision,objetivo-->
-                    <p class="light center"><?= $emp->get('emp_objetivo') ?></p>
-                </div>
-            </div>
 
-        </div>
-    </div>
-</div>
-<?php endforeach ?>
 
 <!-- productos -->
 <div class="section scrollspy" id="productos">
+
+    
     <div class="container">
-        <h2 class="header text_b center-align" style="color: <?= $catego->get('con_navbar') ?>">Productos destacados</h2>
+    <div class="card">
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width">
+        <?php foreach ($categoryParent as $key): ?>
+
+            <li class="tab">
+                <a class="categoriasProductos" id="<?=$key->get('cat_id') ?>" style="font-size: 14px;" href="#test<?=$key->get('cat_id')?>"><?=$key->get('cat_name')?></a>
+            </li>
+              
+        <?php endforeach ?>
+          </ul>
+        </div>
+
+
+
+
+
+        <div class="card-content grey lighten-4">
+          <div id="test4"> 
         <div class="row">
-        <?php if ($product!=false): ?>
+    <?php if ($product!=false): ?>
         <?php foreach ($product as $key0): ?>
             <div class="col s12 m4 l4">
                 <div class="card">
@@ -217,33 +202,16 @@
 
         <?php endif ?>
         </div>
-    </div>
+
+
+          </div>
+        </div>
+      </div>
+      </div>
 </div>
 
-<!-- Team -->
-<div class="section scrollspy" id="team">
-    <div class="container">
-        <h2 class="header text_b center-align" style="color: <?= $catego->get('con_navbar') ?>"> Nuestro equipo </h2>
-        <div class="row">
-            <?php foreach ($equipo as $key): ?>
-            <div id="perfilFalsh" class="col s12 m4">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="<?= base_url('resources/img/'.$key->get('team_foto'))?>">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4"><?= $key->get('team_nom') ?> <br/>
-                            <small><em><a style="color: <?= $catego->get('con_footer') ?>"><?= $key->get('team_cargo') ?></a></em></small></span>
-                        <p>
-                            <?= $key->get('team_desc') ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <?php endforeach ?>
-        </div>
-    </div>
-</div>
+
+
 
 <footer id="contacto" class="page-footer scrollspy" style="background: <?= $catego->get('con_footer') ?>">
     <div class="container">  
@@ -304,65 +272,20 @@
 <script src="<?= base_url('resources/min/custom-min.js') ?>"></script>
 <script src="<?= base_url('resources/js/pnotify.custom.min.js') ?>"></script>
 <script type="text/javascript" charset="utf-8">
-    $( "#perfilFalsh" ).click(function() {
-        pNotify = new PNotify({
-            title: 'Flash',
-            text: 'Él es flash',
-            type: 'error',
-            hide: false,
-            icon: "fa fa-bolt"
-        });
-        pNotify.open();
-    });
-
-    $(document).ready(function() {
-        $('.dropdown-button').dropdown({
-            inDuration: 300,
-            outDuration: 225,
-            constrain_width: true,
-            hover: true,
-            gutter: 0,
-            belowOrigin: true,
-            alignment: 'left'
-            });
-    });
 
 
-    $( "#sendMail" ).click(function() {
+    $( ".categoriasProductos" ).click(function() {
 
-        var name = $("#form_name").val();
-        var email = $("#form_email").val();
-        var message = $("#msg_text").val();
+        var name = $(this).attr("id");
+
 
         $.ajax({
             method: "POST",
-            url: "<?=site_url('/Frontend/sendMail')?>",
-            data: {"namePost": name, "email": email, "message": message},
+            url: "<?=site_url('/Frontend/categoria')?>",
+            data: {"catId": name},
             type: 'json',
             success: function(response){
-                    alert(response.msj);
-                switch(response.msj) {
-                    case 0:
-                        pNotifyMail = new PNotify({
-                            title: 'Error',
-                            text: 'Su mensaje no fue enviado correctamente, intente nuevamente.',
-                            type: 'error',
-                            hide: false,
-                            icon: "fa fa-error"
-                        });
-                        pNotifyMail.open();
-                        break;
-                    case 1:
-                        pNotifyMail = new PNotify({
-                            title: 'Exito !',
-                            text: 'Su mensaje fue enviado correctamente!.',
-                            type: 'success',
-                            hide: false,
-                            icon: "fa fa-error"
-                        });
-                        pNotifyMail.open();
-                        break;
-                }
+                alert(response.product);
             }
         });
     });

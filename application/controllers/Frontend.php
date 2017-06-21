@@ -42,8 +42,9 @@ class Frontend extends CI_Controller {
 		$this->load->view('Master/base.php', $data);
 	}
 
-	public function categoria($idcat=0)
+	public function categoria()
 	{
+		$catId = $_POST('catId');
 		$data['config']=$this->conf->findAllActivados();
 		$data['categoryParent']=$this->cat->findAllParentActivados();
 		$data['subCat']=array();
@@ -51,7 +52,6 @@ class Frontend extends CI_Controller {
 		foreach ($data['categoryParent'] as $key) {
 			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
 		}
-
 
 		$data['product']=$this->prod->findByCatIdAct($idcat);
 
@@ -64,10 +64,39 @@ class Frontend extends CI_Controller {
 		$data['equipo']=$this->team->findAll();
 		$data['business']=$this->empresa->findAll();
 
-		$this->load->view('Master/base.php', $data);
+		$this->output->set_content_type('application/json');
+	    $this->output->set_output(json_encode(array("product" => 'hola bb' )));
 	}
 
-	public function sendMail(){
+
+	public function productos(){
+		$data['config']=$this->conf->findAllActivados();
+
+		$data['categoryParent']=$this->cat->findAllParentActivados();
+		$data['subCat']=array();
+
+		foreach ($data['categoryParent'] as $key) {
+			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
+		}
+
+
+		$data['product']=$this->prod->findAllActivados();
+
+		foreach ($data['product'] as $key) {
+			$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
+		}
+
+		$data['redes']=$this->redes->findAll();
+		$data['equipo']=$this->team->findAll();
+		$data['business']=$this->empresa->findAll();
+
+
+		$this->load->view('Master/productos.php', $data);
+	}
+
+
+
+	/*public function sendMail(){
 
 		$name = $_POST['namePost'];
 		$email = $_POST['email'];
@@ -80,7 +109,7 @@ class Frontend extends CI_Controller {
 	      }
 		$this->output->set_content_type('application/json');
 	    $this->output->set_output(json_encode(array("msj" => $val )));
-		/*$mail = new PHPMailer;
+		$mail = new PHPMailer;
 
 		//$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
@@ -115,9 +144,9 @@ class Frontend extends CI_Controller {
 		} else {
 		    $this->output->set_content_type('application/json');
 	      	$this->output->set_output(json_encode(array("msj" =>1 )));
-		}*/
+		}
 	}
-
+*/
 }
 
 /* End of file Frontend.php */
