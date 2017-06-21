@@ -94,7 +94,7 @@
         </h1>
     </div>
 </div>
-
+[
 <!-- inicio and service -->
 <div id="inicio" class="section scrollspy">
     <div class="container">
@@ -139,10 +139,9 @@
             <div class="col s12 m4 l4">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
-                    <?php 
-                     foreach ($multimedia as $key3):?>
-                        <img class="activator" src="<?= base_url('resources/img/'.$key3->get('mul_route'));?>">
-                    <?php endforeach ?>
+                    
+                        <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')]->get('mul_route'));?>">
+                    
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4"><?= $key0->get('pro_name') ?> <i class="mdi-navigation-more-vert right"></i></span>
