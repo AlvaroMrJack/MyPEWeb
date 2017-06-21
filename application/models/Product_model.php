@@ -111,9 +111,13 @@ public function findAll(){
     $query = $this ->db-> get_where('mypeweb_product',array('pro_cat_id'=>$id, 'pro_status'=>1));
    if($query -> num_rows() >= 1)
          {
-            $row = $query->row_object();
-            $pro=$this->create($row);
-            return $pro; 
+            $pro=array();
+
+     foreach ($query->result() as $row) {
+            $pro[]=$this->create($row);
+  }
+            return $pro;
+ 
          }
     return false;
   }

@@ -21,9 +21,12 @@ class Frontend extends CI_Controller {
 		$data['config']=$this->conf->findAllActivados();
 		$data['categoryParent']=$this->cat->findAllParentActivados();
 		$data['subCat']=array();
-		foreach ($data['categoryParent'] as $key => $value) {
-			$data['subCat'][$key->cat_id]=$this->cat->findByParent($key->cat_id);
+
+		foreach ($data['categoryParent'] as $key) {
+			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
 		}
+
+
 		$data['product']=$this->prod->findAllActivados();
 
 		foreach ($data['product'] as $key) {
@@ -37,53 +40,28 @@ class Frontend extends CI_Controller {
 		$this->load->view('Master/base.php', $data);
 	}
 
-	public function categoria()
+	public function categoria($idcat=0)
 	{
 
 
 		$data['config']=$this->conf->findAll();
 		$data['categoryParent']=$this->cat->findAllParentActivados();
 		$data['subCat']=array();
-		foreach ($data['categoryParent'] as $key => $value) {
-			$data['subCat'][$key->cat_id]=$this->cat->findByParent($key->cat_id);
+		foreach ($data['categoryParent'] as $key) {
+			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
 		}
-		//$data['product']=$this->prod->findByCatIdAct();
-/*
-		foreach ($data['product'] as $key => $value) {
-			$data['multimedia'][$key->pro_id]=$this->mul->findByProId($key->pro_id);
+		$data['product']=$this->prod->findByCatIdAct($idcat);
+
+		if($data['product']!=false){
+		foreach ($data['product'] as $key) {
+			$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
 		}
-		$data['redes']=$this->redes->findAll();*/
+}
+		$data['redes']=$this->redes->findAll();
+		$data['equipo']=$this->team->findAll();
 
 
-		//$this->load->view('Frontend/catalogo', $data);
-
-
-
-
-
-
-
-		$this->load->database();
-		$this->load->model('Category_model', 'cat');
-		$this->load->model('Config_model', 'conf');
-		$this->load->model('Multimedia_model', 'mul');
-		$this->load->model('Product_model', 'prod');
-		$this->load->model('Redes_model', 'redes');
-
-		$data['config']=$this->conf->findAllActivados();
-		$data['categoryParent']=$this->cat->findAllParentActivados();
-		$data['subCat']=array();
-		foreach ($data['categoryParent'] as $key => $value) {
-			$data['subCat'][$key->cat_id]=$this->cat->findByParent($key->cat_id);
-		}
-		$data['product']=$this->prod->findAllActivados();
-
-		foreach ($data['product'] as $key => $value) {
-			$data['multimedia'][$key->pro_id]=$this->mul->findByProId($key->pro_id);
-		}
-		$social_network=$this->redes->findAll();
-
-		var_dump($social_network[0]);
+		$this->load->view('Master/base.php', $data);
 
 
 

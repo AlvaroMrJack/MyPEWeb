@@ -1,4 +1,4 @@
-
+<?php ?>
 
 <!DOCTYPE html>
 <html>
@@ -29,25 +29,29 @@
  <div class="navbar-fixed">
   <!--  Dropdown Structure  -->
 
+  <ul id='' class=''>
+    <li><a class="dropdown-button {{ navbarColor }}" style="color: #{{ colorNavbar }};" data-activates="secondDRP1">Categorias</a></li>
+  </ul>
+
   <ul id='dropdown1' class='dropdown-content {{ navbarColor }}'>
-    <li><a href="#!" style="color: #{{ colorNavbar }};">uno</a></li>
-    <li><a href="#!" style="color: #{{ colorNavbar }};">dos</a></li>
-    <li><a class="dropdown-button {{ navbarColor }}" style="color: #{{ colorNavbar }};" data-activates="secondDRP1">dropdown</a></li>
+  <?php foreach ($categoryParent as $key): ?>
+    <li><a class="truncate {{ navbarColor }}" style="color: #{{ colorNavbar }};" style="color: #{{ colorNavbar }};"><?=$key->get('cat_name')?></a></li>
+      
+<?php foreach ($subCat as $key2):?>
+
+      <ul id='secondDRP1' class='dropdown-content secondDropDown'>
+<?php if ($key2->get('cat_parent')==$key->get('cat_id')): ?>
+    
+    <li><a href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>" style="color: #{{ colorNavbar }};"><?=$key2->get('cat_name')?></a></li>
+
+<?php endif ?>
+  </ul>
+    
+<?php endforeach ?>
+
+  <?php endforeach ?>
   </ul>
 
-  <ul id='secondDRP1' class='dropdown-content secondDropDown'>
-    <li><a class="truncate {{ navbarColor }}" style="color: #{{ colorNavbar }};" style="color: #{{ colorNavbar }};">drop 1</a></li>
-    <li><a class="truncate {{ navbarColor }}" style="color: #{{ colorNavbar }};" style="color: #{{ colorNavbar }};">drop 2</a></li>
-    <li><a class="truncate {{ navbarColor }}" style="color: #{{ colorNavbar }};" style="color: #{{ colorNavbar }};">drop 3</a></li>
-  </ul>
-
-  <!--  Dropdown Structure  -->
-  <ul id='dropdown2' class='dropdown-content'>
-    <li><a href="#!" style="color: #{{ colorNavbar }};">uno</a></li>
-    <li><a href="#!" style="color: #{{ colorNavbar }};">dos</a></li>
-    <li class="divider"></li>
-    <li><a class="dropdown-button" href="#!" data-activates="secondDRP2">dropdown</a></li>
-  </ul>
 
   <ul id='secondDRP2' class='dropdown-content secondDropDown'>
     <li><a class="truncate" href="#!" style="color: #{{ colorNavbar }};">drop 1</a></li>
@@ -64,7 +68,7 @@
                     <li><a href="#{{ navbar }}" style="color: #{{ colorNavbar }};">{{ navbar|title }}</a></li>
                     {% endfor %}
                     <li>
-                        <a class='dropdown-button' href='#' data-activates='dropdown1' style="color: #{{ colorNavbar }};">Drop Me!</a>
+                        <a class='dropdown-button' href='#' data-activates='dropdown1' style="color: #{{ colorNavbar }};">Categorias</a>
                     </li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
@@ -135,6 +139,7 @@
     <div class="container">
         <h2 class="header text_b">Productos </h2>
         <div class="row">
+        <?php if ($product!=false): ?>
         <?php foreach ($product as $key0): ?>
             <div class="col s12 m4 l4">
                 <div class="card">
@@ -154,6 +159,17 @@
                 </div>
             </div>
         <?php endforeach ?>
+    <?php else: ?>
+            <div class="col s12 m4 l4">
+                <div class="card">
+
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">No hay productos en esta categoria<i class="mdi-navigation-more-vert right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+        <?php endif ?>
         </div>
     </div>
 </div>
