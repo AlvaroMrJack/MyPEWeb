@@ -139,8 +139,9 @@
             <div class="col s12 m4 l4">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
-                    <?php foreach ($multimedia[1] as $key3): ?>
-                        <img class="activator" src="<?= base_url('resources/img/'.$key3->get('mul_route'))?>">
+                    <?php 
+                     foreach ($multimedia as $key3):?>
+                        <img class="activator" src="<?= base_url('resources/img/'.$key3->get('mul_route'));?>">
                     <?php endforeach ?>
                     </div>
                     <div class="card-content">
