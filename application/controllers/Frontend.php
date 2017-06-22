@@ -44,33 +44,31 @@ class Frontend extends CI_Controller {
 
 	public function categoria()
 	{
-		$catId = $_POST('catId');
+		$catId = $_POST['catId'];
+
 		$data['config']=$this->conf->findAllActivados();
 		$data['categoryParent']=$this->cat->findAllParentActivados();
 		$data['subCat']=array();
+		$larg = count($this->cat->findAllParentActivados());
 
 		foreach ($data['categoryParent'] as $key) {
 			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
 		}
 
-		$data['product']=$this->prod->findByCatIdAct($idcat);
-
+		$data['product']=$this->prod->findByCatIdAct($catId);
 		if($data['product']!=false){
 			foreach ($data['product'] as $key) {
 				$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
 			}
 		}
-		$data['redes']=$this->redes->findAll();
-		$data['equipo']=$this->team->findAll();
-		$data['business']=$this->empresa->findAll();
 
 		$this->output->set_content_type('application/json');
-	    $this->output->set_output(json_encode(array("product" => 'hola bb' )));
+	    $this->output->set_output(json_encode(array("product" => $data )));
 	}
 
 
-	public function productos(){
-		$data['config']=$this->conf->findAllActivados();
+	public function productos($idcat=0){
+/*		$data['config']=$this->conf->findAllActivados();
 
 		$data['categoryParent']=$this->cat->findAllParentActivados();
 		$data['subCat']=array();
@@ -86,10 +84,63 @@ class Frontend extends CI_Controller {
 			$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
 		}
 
+		*/
 		$data['redes']=$this->redes->findAll();
-		$data['equipo']=$this->team->findAll();
-		$data['business']=$this->empresa->findAll();
 
+
+
+
+
+
+
+
+
+
+
+
+		$carr=$this->cat->findAllActivados();
+		$canti=count($carr);
+
+		if($idcat!=0 && $canti>=$idcat){
+
+
+		$data['config']=$this->conf->findAllActivados();;
+		$data['categoryParent']=$this->cat->findAllParentActivados();
+		$data['subCat']=array();
+		foreach ($data['categoryParent'] as $key) {
+			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
+		}
+
+		$data['product']=$this->prod->findByCatIdAct($idcat);
+		$cat=$this->cat->findById($idcat);
+		$data['nombreCat']=$cat->get('cat_name');
+
+		if($data['product']!=false){
+		foreach ($data['product'] as $key) {
+			$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
+		}
+}
+
+
+
+		}else {
+			
+		$data['config']=$this->conf->findAllActivados();
+		$data['categoryParent']=$this->cat->findAllParentActivados();
+		$data['subCat']=array();
+
+		foreach ($data['categoryParent'] as $key) {
+			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
+		}
+
+
+		$data['product']=$this->prod->findAllActivados();
+
+		foreach ($data['product'] as $key) {
+			$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
+		}
+
+		}
 
 		$this->load->view('Master/productos.php', $data);
 	}

@@ -15,76 +15,11 @@
 
 <body id="top" class="scrollspy">
 
-<!--  Pre Loader  -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
- 
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
- 
-</div>
+
 
 <!-- Navigation -->
  <div class="navbar-fixed">
   <!--  Dropdown Structure  -->
-
-
-
-    <ul id='dropdown1' class='dropdown-content'>
-        <?php foreach ($categoryParent as $key): ?>
-
-        <li>
-            <a class="form_name" style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key->get('cat_id'))?>"><?=$key->get('cat_name')?></a>
-        </li>
-          
-        <?php endforeach ?>
-    </ul>
-
-    <?php foreach ($subCat as $key2):?>
-
-    <ul id='secondDRP1' class='dropdown-content'>
-        <?php if ($key2->get('cat_parent')==$key->get('cat_id')): ?>
-            
-        <li>
-            <a style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>">
-                <?=$key2->get('cat_name')?>
-            </a>
-        </li>
-
-        <?php endif ?>
-    </ul>
-        
-    <?php endforeach ?>
-
-
-
-
-
-    <ul id='dropdown2' class='dropdown-content'>
-        <?php foreach ($categoryParent as $key): ?>
-
-        <li>
-            <a style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key->get('cat_id'))?>" class="dropdown-button" data-activates='secondDRP2'><?=$key->get('cat_name')?></a>
-        </li>
-          
-        <?php endforeach ?>
-    </ul>
-
-    <?php foreach ($subCat as $key2):?>
-
-    <ul id='secondDRP2' class='dropdown-content'>
-        <?php if ($key2->get('cat_parent')==$key->get('cat_id')): ?>
-            
-        <li>
-            <a style="font-size: 14px;" href="<?=site_url('/Frontend/categoria/'.$key2->get('cat_id'))?>">
-                <?=$key2->get('cat_name')?>
-            </a>
-        </li>
-
-        <?php endif ?>
-    </ul>
-        
-    <?php endforeach ?>
 
 
 
@@ -99,7 +34,7 @@
                     </li>
 
                     <li>
-                        <a class='dropdown-button' href='<?= site_url('fontend/productos') ?>'>Productos</a><!--  data-activates='dropdown1' -->
+                        <a href='<?= site_url('frontend/productos') ?>'>Productos</a><!--  data-activates='dropdown1' -->
                     </li>
 
                     <!-- <li>
@@ -135,15 +70,10 @@
 </div>
 
 <!-- Hero -->
-<div class="section no-pad-bot scrollspy" id="index-banner" style="background: <?= $catego->get('con_background') ?>">
+<div class="section no-pad-bot scrollspy" style="background: <?= $catego->get('con_background') ?>">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
-            <span>Empresa</span> 
-           <span class="cd-words-wrapper waiting">
-                <b class="is-visible">palabra 1</b>
-                <b>palabra 2</b>
-                <b>palabra 3</b>
-            </span> 
+            <span>Productos</span>
         </h1>
     </div>
 </div>
@@ -152,19 +82,22 @@
 <!-- productos -->
 <div class="section scrollspy" id="productos">
 
-    
+
     <div class="container">
     <div class="card">
         <div class="card-tabs">
-          <ul class="tabs tabs-fixed-width">
+          <div class="container">   
+        <div class="input-field col s12">
+        <select onchange="location = this.value">
+          <option value="" disabled selected>Elija una categoría</option>
+          <option value="<?=site_url('frontend/productos')?>">Todos los productos</option>
         <?php foreach ($categoryParent as $key): ?>
-
-            <li class="tab">
-                <a class="categoriasProductos" id="<?=$key->get('cat_id') ?>" style="font-size: 14px;" href="#test<?=$key->get('cat_id')?>"><?=$key->get('cat_name')?></a>
-            </li>
-              
+          <option value="<?=site_url('frontend/productos/'.$key->get('cat_id'))?>"><?=$key->get('cat_name')?></option>
         <?php endforeach ?>
-          </ul>
+        </select>
+        <label>Productos</label>
+      </div>
+    </div>
         </div>
 
 
@@ -180,22 +113,26 @@
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                     
-                        <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')]->get('mul_route'));?>">
+                        <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')][0]->get('mul_route'));?>">
                     
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4"><?= $key0->get('pro_name') ?> <i class="mdi-navigation-more-vert right"></i></span>
                         <p><a>Precio: $ <?= $key0->get('pro_price') ?></a></p>
                     </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Descripción: <i class="mdi-navigation-close right"></i></span>
+                        <p><?=$key0->get('pro_description')?></p>
+                    </div>
                 </div>
             </div>
         <?php endforeach ?>
     <?php else: ?>
-            <div class="col s12 m4 l4">
+            <div class="col-md-12 m4 l4 center-align">
                 <div class="card">
 
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">No hay productos en esta categoria<i class="mdi-navigation-more-vert right"></i></span>
+                        <span class="card-title activator grey-text text-darken-4">No hay productos en esta categoria.</span>
                     </div>
                 </div>
             </div>
@@ -272,13 +209,13 @@
 <script src="<?= base_url('resources/min/custom-min.js') ?>"></script>
 <script src="<?= base_url('resources/js/pnotify.custom.min.js') ?>"></script>
 <script type="text/javascript" charset="utf-8">
-
+      $(document).ready(function() {
+    $('select').material_select();
+  });
 
     $( ".categoriasProductos" ).click(function() {
 
         var name = $(this).attr("id");
-
-
         $.ajax({
             method: "POST",
             url: "<?=site_url('/Frontend/categoria')?>",
@@ -288,6 +225,7 @@
                 alert(response.product);
             }
         });
+        
     });
     </script>
 </html>

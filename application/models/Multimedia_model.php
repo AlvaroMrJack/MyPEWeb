@@ -99,9 +99,10 @@ public function findAll(){
     $query = $this ->db-> get_where('mypeweb_multimedia',array('mul_pro_id'=>$id));
    if($query -> num_rows() >= 1)
          {
-            $row = $query->row_object();
-            $mul=$this->create($row);
-            return $mul; 
+    foreach ($query->result() as $query) {
+    $result[] = $this->create($query);
+    return $result;
+  } 
          }
     return false;
   }

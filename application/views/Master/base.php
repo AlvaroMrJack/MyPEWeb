@@ -135,7 +135,7 @@
 </div>
 
 <!-- Hero -->
-<div class="section no-pad-bot scrollspy" id="index-banner" style="background: <?= $catego->get('con_background') ?>">
+<div class="section no-pad-bot scrollspy" id="index-banner" style="background:url(<?=base_url('resources/img/'.$catego->get('con_banner'))?>) no-repeat fixed center;background-size:100% 100%;">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
             <span>Empresa</span> 
@@ -195,7 +195,7 @@
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                     
-                        <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')]->get('mul_route'));?>">
+                        <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')][0]->get('mul_route'));?>">
                     
                     </div>
                     <div class="card-content">
@@ -226,7 +226,7 @@
         <h2 class="header text_b center-align" style="color: <?= $catego->get('con_navbar') ?>"> Nuestro equipo </h2>
         <div class="row">
             <?php foreach ($equipo as $key): ?>
-            <div id="perfilFalsh" class="col s12 m4">
+            <div class="col s12 m4">
                 <div class="card card-avatar">
                     <div class="waves-effect waves-block waves-light">
                         <img class="activator" src="<?= base_url('resources/img/'.$key->get('team_foto'))?>">
@@ -304,7 +304,7 @@
 <script src="<?= base_url('resources/min/custom-min.js') ?>"></script>
 <script src="<?= base_url('resources/js/pnotify.custom.min.js') ?>"></script>
 <script type="text/javascript" charset="utf-8">
-    $( "#perfilFalsh" ).click(function() {
+/*    $( "#perfilFalsh" ).click(function() {
         pNotify = new PNotify({
             title: 'Flash',
             text: 'Él es flash',
@@ -313,7 +313,7 @@
             icon: "fa fa-bolt"
         });
         pNotify.open();
-    });
+    });*/
 
     $(document).ready(function() {
         $('.dropdown-button').dropdown({
