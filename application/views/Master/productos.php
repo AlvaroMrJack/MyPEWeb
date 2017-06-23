@@ -82,22 +82,30 @@
 <!-- productos -->
 <div class="section scrollspy" id="productos">
 
+    <div class="container center-align">
+        <label>Categorías</label>
+        <select onchange="location = this.value">
+          <option disabled selected>Elija una categoría</option>
+          <option value="<?=site_url('frontend/productos')?>">Todos los productos</option>
 
+        <?php foreach ($categoryParent as $key): ?>
+            <option value="<?=site_url('frontend/productos/'.$key->get('cat_id'))?>">
+                <?=$key->get('cat_name')?>
+            </option>
+        <?php endforeach ?>
+            <?php foreach ($subCat as $key2):?>
+            <option value="<?=site_url('frontend/productos/'.$key2->get('cat_id'))?>">
+                -> <?=$key2->get('cat_name')?>
+            </option>
+            <?php endforeach ?>
+        </select>
+    </div>
     <div class="container">
     <div class="card">
         <div class="card-tabs">
-          <div class="container">   
-        <div class="input-field col s12">
-        <select onchange="location = this.value">
-          <option value="" disabled selected>Elija una categoría</option>
-          <option value="<?=site_url('frontend/productos')?>">Todos los productos</option>
-        <?php foreach ($categoryParent as $key): ?>
-          <option value="<?=site_url('frontend/productos/'.$key->get('cat_id'))?>"><?=$key->get('cat_name')?></option>
-        <?php endforeach ?>
-        </select>
-        <label>Productos</label>
-      </div>
-    </div>
+            <div class="container center-align">   
+                    <h5>Productos</h5>
+            </div>
         </div>
 
 
@@ -111,14 +119,14 @@
         <?php foreach ($product as $key0): ?>
             <div class="col s12 m4 l4">
             <a href="<?=site_url('frontend/detalle/'.$key0->get('pro_id'))?>">
-                <div class="card">
+                <div class="card hoverable center-align">
                     <div class="card-image waves-effect waves-block waves-light">
                     
                         <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')][0]->get('mul_route'));?>">
                     
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4"><?= $key0->get('pro_name') ?> <i class="mdi-navigation-more-vert right"></i></span>
+                        <span class="card-title activator grey-text text-darken-4"><?= $key0->get('pro_name') ?></span>
                         <p><a>Precio: $ <?= $key0->get('pro_price') ?></a></p>
                     </div>
                 </div>
@@ -196,9 +204,9 @@
             </div> -->
         </div>
     </div>
-    <div class="footer-copyright center-align" style="background: <?= $catego->get('con_navbar') ?>">
+    <div title="Gracias a www.materializecss.com" class="footer-copyright center-align" style="background: <?= $catego->get('con_navbar') ?>">
         <div class="container">
-            Creado por Clínica MyPE Inacap Renca <a class="white-text" href="http://www.inacap.cl"></a>. Gracias a  <a class="white-text" href="http://materializecss.com/">materializecss</a>
+            Creado por Clínica MyPE Inacap Renca<a class="white-text" href="http://www.inacap.cl"></a>.</a>
         </div>
     </div>
 </footer>

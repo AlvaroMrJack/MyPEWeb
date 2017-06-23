@@ -96,14 +96,13 @@ public function findAll(){
   }
 
    public function findByProId($id){
-    $query = $this ->db-> get_where('mypeweb_multimedia',array('mul_pro_id'=>$id));
-   if($query -> num_rows() >= 1)
-         {
-    foreach ($query->result() as $query) {
-    $result[] = $this->create($query);
-    return $result;
-  } 
-         }
+    $query = $this->db->get_where('mypeweb_multimedia',array('mul_pro_id'=>$id));
+    if($query -> num_rows() >= 1){
+      foreach ($query->result() as $query) {
+        $result[] = $this->create($query);
+      } 
+        return $result;
+    }
     return false;
   }
 

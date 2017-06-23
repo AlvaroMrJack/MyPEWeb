@@ -120,30 +120,60 @@ class Frontend extends CI_Controller {
 
 	public function detalle($id=0){
 
-		$carr=$this->prod->findAllActivados();
-		$canti=count($carr);
-
-		if($id!=0 && $canti>=$id){
-
-		$data['config']=$this->conf->findAllActivados();
+		$data['product']=$this->prod->findById($id);
 		
-		$data['categoryParent']=$this->cat->findAllParentActivados();
-		$data['subCat']=array();
-		
+			if ($data['product']!==null) {
+
+			$carr=$this->prod->findAllActivados();
+			$canti=count($carr);
+
+			if($id!=0 && $canti>=$id){
+
+			$data['config']=$this->conf->findAllActivados();
+			
+			$data['categoryParent']=$this->cat->findAllParentActivados();
+			$data['subCat']=array();
+			
 
 
-		foreach ($data['categoryParent'] as $key) {
-			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
+			foreach ($data['categoryParent'] as $key) {
+				$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
+			}
+
+			$data['redes']=$this->redes->findAll();		
+
+			$data['multimedia']=array();
+			$data['multimedia']=$this->mul->findByProId($id);
+
+			$this->load->view('Master/detalle.php',$data);
+		}else{
+
+			$data['config']=$this->conf->findAllActivados();
+			$data['categoryParent']=$this->cat->findAllParentActivados();
+			$data['subCat']=array();
+
+			foreach ($data['categoryParent'] as $key) {
+				$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
+			}
+
+
+			$data['product']=$this->prod->findAllActivados();
+
+			foreach ($data['product'] as $key) {
+				$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
+			}
+
+			$data['redes']=$this->redes->findAll();
+			$data['equipo']=$this->team->findAll();
+			$data['business']=$this->empresa->findAll();
+
+
+			$this->load->view('Master/base.php', $data);
 		}
 
 
-		$data['product']=$this->prod->findById($id);
-$data['multimedia']=array();
-			$data['multimedia']=$this->mul->findByProId($id);
-		
 
-		$data['redes']=$this->redes->findAll();		
-		$this->load->view('Master/detalle.php',$data);
+
 
 }else{
 

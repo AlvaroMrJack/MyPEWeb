@@ -9,9 +9,7 @@
 
     <link href="<?= base_url('resources/min/plugin-min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?= base_url('resources/min/custom-min.css') ?>" type="text/css" rel="stylesheet" >
-    <link href="<?= base_url('resources/js/pnotify.custom.min.css') ?>" type="text/css" rel="stylesheet" >
     <link href="<?= base_url('resources/css/style.css') ?>" type="text/css" rel="stylesheet" >
-    <link href="<?= base_url('resources/css/materialize.css') ?>" type="text/css" rel="stylesheet" >
       <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
    
@@ -111,24 +109,28 @@
             
             <div class="col s12 m4 l4">
                 <div class="card">
-                    <div class="card-image  waves-block waves-light">
+                    <div class="card-image">
                     
                         <img class="activator" src="<?=base_url('resources/img/'.$multimedia[0]->get('mul_route')) ?>">
                     
                     </div>
                     <div class="card-content center-align">
-                        <span class="card-title grey-text text-darken-4"><?= $product->get('pro_name') ?></span>
-                        <p><a>Precio: $ <?= $product->get('pro_price') ?></a></p>
+                        <span class="card-title grey-text text-darken-4">Precio: $ <?= $product->get('pro_price') ?></span>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4 l8">
-                <div class="carousel">
-                    <a class="carousel-item">
+            <div class="col s12 m4 l8 center-align">
+                <div class="carousel"><br><br>
+                        <span>
+                            <strong>
+                                <em>Imagenes</em>
+                            </strong>
+                        </span>
                         <?php foreach ($multimedia as $mul): ?>
+                    <a class="carousel-item">
                         <img src="<?=base_url('resources/img/'.$mul->get('mul_route'))?>">
-                        <?php endforeach ?>
                     </a>
+                        <?php endforeach ?>
                 </div>
             </div>
     <?php else: ?>
@@ -209,14 +211,13 @@
             </div> -->
         </div>
     </div>
-    <div class="footer-copyright center-align" style="background: <?= $catego->get('con_navbar') ?>">
+    <div title="Gracias a www.materializecss.com" class="footer-copyright center-align" style="background: <?= $catego->get('con_navbar') ?>">
         <div class="container">
-            Creado por Clínica MyPE Inacap Renca <a class="white-text" href="http://www.inacap.cl"></a>. Gracias a  <a class="white-text" href="http://materializecss.com/">materializecss</a>
+            Creado por Clínica MyPE Inacap Renca<a class="white-text" href="http://www.inacap.cl"></a>.</a>
         </div>
     </div>
 </footer>
 <!--  Scripts-->
-<script src="<?= base_url('resources/js/modernizr.js') ?>"></script>
 <script src="<?= base_url('resources/js/jquery-2.1.1.min.js') ?>"></script>
 <script src="<?= base_url('resources/min/plugin-min.js') ?>"></script>
 
@@ -224,7 +225,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 <script src="<?= base_url('resources/min/custom-min.js') ?>"></script>
 <script src="<?= base_url('resources/js/pnotify.custom.min.js') ?>"></script>
-<script src="<?= base_url('resources/js/init.js') ?>"></script>
 <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
           $('.carousel').carousel();

@@ -189,8 +189,10 @@
     <div class="container">
         <h2 class="header text_b center-align" style="color: <?= $catego->get('con_navbar') ?>">Productos destacados</h2>
         <div class="row">
+        <?php $num=0; ?>
         <?php if ($product!=false): ?>
         <?php foreach ($product as $key0): ?>
+            <?php if ($num!=3): ?><!-- cantidad de productos mostrados -->
             <div class="col s12 m4 l4">
             <a href="<?=site_url('frontend/detalle/'.$key0->get('pro_id'))?>">
                 <div class="card">
@@ -206,13 +208,13 @@
                 </div>
             </a>
             </div>
+            <?php $num++;  endif ?>
         <?php endforeach ?>
     <?php else: ?>
-            <div class="col s12 m4 l4">
+            <div class="col s12 m12 l12 center-align">
                 <div class="card">
-
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">No hay productos en esta categoria<i class="mdi-navigation-more-vert right"></i></span>
+                        <span class="card-title activator grey-text text-darken-4">No hay productos destacados.</span>
                     </div>
                 </div>
             </div>
@@ -295,9 +297,9 @@
             </div> -->
         </div>
     </div>
-    <div class="footer-copyright center-align" style="background: <?= $catego->get('con_navbar') ?>">
+    <div title="Gracias a www.materializecss.com" class="footer-copyright center-align" style="background: <?= $catego->get('con_navbar') ?>">
         <div class="container">
-            Creado por Clínica MyPE Inacap Renca <a class="white-text" href="http://www.inacap.cl"></a>. Gracias a  <a class="white-text" href="http://materializecss.com/">materializecss</a>
+            Creado por Clínica MyPE Inacap Renca<a class="white-text" href="http://www.inacap.cl"></a>.</a>
         </div>
     </div>
 </footer>
