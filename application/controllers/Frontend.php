@@ -68,6 +68,13 @@ class Frontend extends CI_Controller {
 
 
 	public function productos($idcat=0){
+		$arraycatsub = array();
+		$categorias = $this->cat->findByArray(array("cat_status" => 1 ));
+		foreach ($categorias as $key => $value) {
+			if ($value->get("cat_parent") == NULL) {
+				$arraycatsub[] = array("idcat" => $value->get("cat_id"),"catnombre" => $value->get("cat_name"),"arraydehijos" => $this->cat->findByArray(array("cat_parent" => $value->get("cat_id"))));
+			}
+		}
 		$data['redes']=$this->redes->findAll();
 
 		$carr=$this->cat->findAllActivados();
@@ -86,17 +93,20 @@ class Frontend extends CI_Controller {
 		$data['product']=$this->prod->findByCatIdAct($idcat);
 		$cat=$this->cat->findById($idcat);
 		$data['nombreCat']=$cat->get('cat_name');
-
+		$data['ejemplo'] = $arraycatsub;
 		if($data['product']!=false){
 		foreach ($data['product'] as $key) {
 			$data['multimedia'][$key->get('pro_id')]=$this->mul->findByProId($key->get('pro_id'));
+			}
 		}
-}
 
 
 
 		}else {
-			
+
+		
+
+		$data['ejemplo'] = $arraycatsub;
 		$data['config']=$this->conf->findAllActivados();
 		$data['categoryParent']=$this->cat->findAllParentActivados();
 		$data['subCat']=array();
@@ -105,7 +115,7 @@ class Frontend extends CI_Controller {
 			$data['subCat'][$key->get('cat_id')]=$this->cat->findByParent($key->get('cat_id'));
 		}
 
-
+		$data['ejemplo'] = $arraycatsub;
 		$data['product']=$this->prod->findAllActivados();
 
 		foreach ($data['product'] as $key) {
@@ -115,6 +125,16 @@ class Frontend extends CI_Controller {
 		}
 
 		$this->load->view('Master/productos.php', $data);
+
+
+
+
+
+
+
+
+
+
 	}
 
 
@@ -222,7 +242,7 @@ class Frontend extends CI_Controller {
 		}
 
 		}
-
+		$data['ejemplo'] = $arraycatsub;
 		$this->load->view('Master/productos.php', $data);
 
 	

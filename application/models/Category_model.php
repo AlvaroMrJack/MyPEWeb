@@ -42,6 +42,16 @@ public function insert(){
 $this->db->insert('mypeweb_category',$this->_columns);
 }
 
+  public function findByArray($myarray = null){
+    $result = null;
+      $res = $this->db->get_where('mypeweb_category',$myarray);
+         foreach ($res->result() as $row) {
+          $result[] = $this->create($row);
+          }
+       
+      return $result;
+  }
+
 public function update($id, $data) {
   $category = $this->db->get_where('mypeweb_category',array('cat_id'=>$id));
   if($category->num_rows() > 0){

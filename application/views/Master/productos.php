@@ -83,20 +83,31 @@
 <div class="section scrollspy" id="productos">
     <div class="container center-align">
         <label>Categorías</label>
+
+
+
         <select onchange="location = this.value">
+
+
           <option disabled selected>Elija una categoría</option>
           <option value="<?=site_url('frontend/productos')?>">Todos los productos</option>
-        <?php foreach ($categoryParent as $key): ?>
-            <option value="<?=site_url('frontend/productos/'.$key->get('cat_id'))?>">
-                <?=$key->get('cat_name')?>
-            </option>
-            <?php foreach ($subCat as $key2):?>
-            <option value="<?=site_url('frontend/productos/'.$key2->get('cat_id'))?>">
-                -> <?=$key2->get('cat_name')?>
-            </option>
+
+
+       <?php foreach ($ejemplo as $key => $value): ?>
+        
+           <option value="<?=site_url('frontend/productos/'.$value["idcat"])  ?> "><?= $value["catnombre"]  ?></option>
+            <?php foreach ($value["arraydehijos"] as $key2 => $value2): ?>
+                <option value="<?=site_url('frontend/productos/'.$value2->get("cat_id"))  ?> ">
+                -> <?= $value2->get("cat_name")?>
+                </option>
             <?php endforeach ?>
-        <?php endforeach ?>
+           
+       <?php endforeach ?>
+
         </select>
+
+
+
     </div>
     <div class="container">
         <div class="card">
