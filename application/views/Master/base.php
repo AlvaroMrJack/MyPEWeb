@@ -192,17 +192,19 @@
         <?php if ($product!=false): ?>
         <?php foreach ($product as $key0): ?>
             <div class="col s12 m4 l4">
+            <a href="<?=site_url('frontend/detalle/'.$key0->get('pro_id'))?>">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                     
                         <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')][0]->get('mul_route'));?>">
                     
                     </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4"><?= $key0->get('pro_name') ?> <i class="mdi-navigation-more-vert right"></i></span>
+                    <div class="card-content center-align">
+                        <span class="card-title activator grey-text text-darken-4"><?= $key0->get('pro_name') ?></span>
                         <p><a>Precio: $ <?= $key0->get('pro_price') ?></a></p>
                     </div>
                 </div>
+            </a>
             </div>
         <?php endforeach ?>
     <?php else: ?>
@@ -293,7 +295,7 @@
             </div> -->
         </div>
     </div>
-    <div class="footer-copyright" style="background: <?= $catego->get('con_navbar') ?>">
+    <div class="footer-copyright center-align" style="background: <?= $catego->get('con_navbar') ?>">
         <div class="container">
             Creado por Clínica MyPE Inacap Renca <a class="white-text" href="http://www.inacap.cl"></a>. Gracias a  <a class="white-text" href="http://materializecss.com/">materializecss</a>
         </div>

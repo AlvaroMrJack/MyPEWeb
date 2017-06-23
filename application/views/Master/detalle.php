@@ -11,6 +11,10 @@
     <link href="<?= base_url('resources/min/custom-min.css') ?>" type="text/css" rel="stylesheet" >
     <link href="<?= base_url('resources/js/pnotify.custom.min.css') ?>" type="text/css" rel="stylesheet" >
     <link href="<?= base_url('resources/css/style.css') ?>" type="text/css" rel="stylesheet" >
+    <link href="<?= base_url('resources/css/materialize.css') ?>" type="text/css" rel="stylesheet" >
+      <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+   
 </head>
 
 <body id="top" class="scrollspy">
@@ -30,7 +34,7 @@
 
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="<?=base_url()?>">Inicio</a>
+                        <a href="<?= base_url(); ?>">Inicio</a>
                     </li>
 
                     <li>
@@ -73,7 +77,7 @@
 <div class="section no-pad-bot scrollspy" style="background: <?= $catego->get('con_background') ?>">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
-            <span>Productos</span>
+            <span>Detalle del producto</span>
         </h1>
     </div>
 </div>
@@ -86,18 +90,9 @@
     <div class="container">
     <div class="card">
         <div class="card-tabs">
-          <div class="container">   
-        <div class="input-field col s12">
-        <select onchange="location = this.value">
-          <option value="" disabled selected>Elija una categoría</option>
-          <option value="<?=site_url('frontend/productos')?>">Todos los productos</option>
-        <?php foreach ($categoryParent as $key): ?>
-          <option value="<?=site_url('frontend/productos/'.$key->get('cat_id'))?>"><?=$key->get('cat_name')?></option>
-        <?php endforeach ?>
-        </select>
-        <label>Productos</label>
-      </div>
-    </div>
+            <div class="container center-align"> 
+                <h4 style="color: <?=$catego->get('con_navbar') ?>;"><?= $product->get('pro_name') ?></h4>
+            </div>
         </div>
 
 
@@ -105,26 +100,37 @@
 
 
         <div class="card-content grey lighten-4">
-          <div id="test4"> 
-        <div class="row">
+          <div id="test4">
     <?php if ($product!=false): ?>
-        <?php foreach ($product as $key0): ?>
+        <div class="row center-align">
+            <span><strong><em>Descripción</em>:</strong> <?=$product->get('pro_description') ?></span>
+        </div>
+        <div class="row">
+
+
+            
             <div class="col s12 m4 l4">
-            <a href="<?=site_url('frontend/detalle/'.$key0->get('pro_id'))?>">
                 <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
+                    <div class="card-image  waves-block waves-light">
                     
-                        <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')][0]->get('mul_route'));?>">
+                        <img class="activator" src="<?=base_url('resources/img/'.$multimedia[0]->get('mul_route')) ?>">
                     
                     </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4"><?= $key0->get('pro_name') ?> <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a>Precio: $ <?= $key0->get('pro_price') ?></a></p>
+                    <div class="card-content center-align">
+                        <span class="card-title grey-text text-darken-4"><?= $product->get('pro_name') ?></span>
+                        <p><a>Precio: $ <?= $product->get('pro_price') ?></a></p>
                     </div>
                 </div>
-            </a>
             </div>
-        <?php endforeach ?>
+            <div class="col s12 m4 l8">
+                <div class="carousel">
+                    <a class="carousel-item">
+                        <?php foreach ($multimedia as $mul): ?>
+                        <img src="<?=base_url('resources/img/'.$mul->get('mul_route'))?>">
+                        <?php endforeach ?>
+                    </a>
+                </div>
+            </div>
     <?php else: ?>
             <div class="col-md-12 m4 l4 center-align">
                 <div class="card">
@@ -135,9 +141,16 @@
                 </div>
             </div>
 
-        <?php endif ?>
-        </div>
 
+        <?php endif ?>
+
+
+        
+         
+
+
+
+        </div>
 
           </div>
         </div>
@@ -203,15 +216,21 @@
     </div>
 </footer>
 <!--  Scripts-->
+<script src="<?= base_url('resources/js/modernizr.js') ?>"></script>
+<script src="<?= base_url('resources/js/jquery-2.1.1.min.js') ?>"></script>
 <script src="<?= base_url('resources/min/plugin-min.js') ?>"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 <script src="<?= base_url('resources/min/custom-min.js') ?>"></script>
 <script src="<?= base_url('resources/js/pnotify.custom.min.js') ?>"></script>
+<script src="<?= base_url('resources/js/init.js') ?>"></script>
 <script type="text/javascript" charset="utf-8">
-      $(document).ready(function() {
-    $('select').material_select();
-  });
+        $(document).ready(function(){
+          $('.carousel').carousel();
+        });
 
-    $( ".categoriasProductos" ).click(function() {
+    /*$( ".categoriasProductos" ).click(function() {
 
         var name = $(this).attr("id");
         $.ajax({
@@ -224,7 +243,7 @@
             }
         });
         
-    });
+    });*/
     </script>
 </html>
 <?php endforeach ?>
