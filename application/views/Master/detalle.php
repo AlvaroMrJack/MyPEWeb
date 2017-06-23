@@ -11,71 +11,67 @@
     <link href="<?= base_url('resources/min/custom-min.css') ?>" type="text/css" rel="stylesheet" >
     <link href="<?= base_url('resources/css/style.css') ?>" type="text/css" rel="stylesheet" >
       <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
    
 </head>
 
 <body id="top" class="scrollspy">
 
 
+    <header>
+        <!-- Navigation -->
+        <div class="navbar-fixed">
+          <!--  Dropdown Structure  -->
+            <nav style="background: <?= $catego->get('con_navbar') ?>">
+                    <div class="nav-wrapper">
+                <div class="container">
+                    <a href="<?= base_url(); ?>" class="brand-logo">Empresa</a>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 
-<!-- Navigation -->
- <div class="navbar-fixed">
-  <!--  Dropdown Structure  -->
+                        <ul class="right hide-on-med-and-down">
+                            <li>
+                                <a href="<?= base_url(); ?>">Inicio</a>
+                            </li>
 
+                            <li>
+                                <a href='<?= site_url('frontend/productos') ?>'>Productos</a><!--  data-activates='dropdown1' -->
+                            </li>
 
-
-    <nav id="nav_f" style="background: <?= $catego->get('con_navbar') ?>" role="navigation">
-        <div class="container">
-            <div class="nav-wrapper">
-            <a href="<?= base_url(); ?>" id="logo-container" class="brand-logo">Empresa</a>
-
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="<?= base_url(); ?>">Inicio</a>
-                    </li>
-
-                    <li>
-                        <a href='<?= site_url('frontend/productos') ?>'>Productos</a><!--  data-activates='dropdown1' -->
-                    </li>
-
-                    <!-- <li>
-                        <a href="#team">Equipo</a>
-                    </li>
-                    
-                    <li>
-                        <a href="#contacto">Contacto</a>
-                    </li> -->
-                </ul>
-
-
-                <ul id="nav-mobile" class="side-nav">
-                    <li>
-                        <a href="<?= base_url(); ?>">Inicio</a>
-                    </li>
-
-                    <li>
-                        <a class='dropdown-button' href='<?= site_url('fontend/productos') ?>'>Productos</a>
-                    </li>
-
-                    <!-- <li>
-                        <a href="#team">Equipo</a>
-                    </li>
-                    <li>
-                        <a href="#contacto">Contacto</a>
-                    </li> -->
-                </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-            </div>
+                            <!-- <li>
+                                <a href="#team">Equipo</a>
+                            </li>
+                            
+                            <li>
+                                <a href="#contacto">Contacto</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </nav>
-</div>
+        <ul id="nav-mobile" class="side-nav">
+            <li>
+                <a href="<?= base_url(); ?>">Inicio</a>
+            </li>
+
+            <li>
+                <a href='<?=site_url('frontend/productos') ?>'>Productos</a>
+            </li>
+
+            <!-- <li>
+                <a href="#team">Equipo</a>
+            </li>
+            <li>
+                <a href="#contacto">Contacto</a>
+            </li> -->
+        </ul>
+    </header>
 
 <!-- Hero -->
 <div class="section no-pad-bot scrollspy" style="background: <?= $catego->get('con_background') ?>">
     <div class="container">
         <h1 class="text_h center header cd-headline letters type">
-            <span>Detalle del producto</span>
+            <span style="font-size: 60px;">Detalle del producto</span>
         </h1>
     </div>
 </div>
@@ -111,7 +107,7 @@
                 <div class="card">
                     <div class="card-image">
                     
-                        <img class="activator" src="<?=base_url('resources/img/'.$multimedia[0]->get('mul_route')) ?>">
+                        <img class="activator materialboxed" src="<?=base_url('resources/img/'.$multimedia[0]->get('mul_route')) ?>">
                     
                     </div>
                     <div class="card-content center-align">
@@ -218,16 +214,15 @@
     </div>
 </footer>
 <!--  Scripts-->
-<script src="<?= base_url('resources/js/jquery-2.1.1.min.js') ?>"></script>
 <script src="<?= base_url('resources/min/plugin-min.js') ?>"></script>
+<script src="<?= base_url('resources/min/custom-min.js') ?>"></script>
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-<script src="<?= base_url('resources/min/custom-min.js') ?>"></script>
-<script src="<?= base_url('resources/js/pnotify.custom.min.js') ?>"></script>
 <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
           $('.carousel').carousel();
+          $('.materialboxed').materialbox();
         });
 
     /*$( ".categoriasProductos" ).click(function() {

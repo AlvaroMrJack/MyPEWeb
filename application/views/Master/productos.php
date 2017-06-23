@@ -53,7 +53,7 @@
                     </li>
 
                     <li>
-                        <a class='dropdown-button' href='<?= site_url('fontend/productos') ?>'>Productos</a>
+                        <a href='<?= site_url('fontend/productos') ?>'>Productos</a>
                     </li>
 
                     <!-- <li>
@@ -72,85 +72,75 @@
 <!-- Hero -->
 <div class="section no-pad-bot scrollspy" style="background: <?= $catego->get('con_background') ?>">
     <div class="container">
-        <h1 class="text_h center header cd-headline letters type">
-            <span>Productos</span>
-        </h1>
+        <h6 class="text_h center header cd-headline letters type">
+            <span style="font-size: 60px;">Productos</span>
+        </h6>
     </div>
 </div>
 
 
 <!-- productos -->
 <div class="section scrollspy" id="productos">
-
     <div class="container center-align">
         <label>Categorías</label>
         <select onchange="location = this.value">
           <option disabled selected>Elija una categoría</option>
           <option value="<?=site_url('frontend/productos')?>">Todos los productos</option>
-
         <?php foreach ($categoryParent as $key): ?>
             <option value="<?=site_url('frontend/productos/'.$key->get('cat_id'))?>">
                 <?=$key->get('cat_name')?>
             </option>
-        <?php endforeach ?>
             <?php foreach ($subCat as $key2):?>
             <option value="<?=site_url('frontend/productos/'.$key2->get('cat_id'))?>">
                 -> <?=$key2->get('cat_name')?>
             </option>
             <?php endforeach ?>
+        <?php endforeach ?>
         </select>
     </div>
     <div class="container">
-    <div class="card">
-        <div class="card-tabs">
-            <div class="container center-align">   
+        <div class="card">
+            <div class="card-tabs">
+                <div class="container center-align">   
                     <h5>Productos</h5>
-            </div>
-        </div>
-
-
-
-
-
-        <div class="card-content grey lighten-4">
-          <div id="test4"> 
-        <div class="row">
-    <?php if ($product!=false): ?>
-        <?php foreach ($product as $key0): ?>
-            <div class="col s12 m4 l4">
-            <a href="<?=site_url('frontend/detalle/'.$key0->get('pro_id'))?>">
-                <div class="card hoverable center-align">
-                    <div class="card-image waves-effect waves-block waves-light">
-                    
-                        <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')][0]->get('mul_route'));?>">
-                    
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4"><?= $key0->get('pro_name') ?></span>
-                        <p><a>Precio: $ <?= $key0->get('pro_price') ?></a></p>
-                    </div>
-                </div>
-            </a>
-            </div>
-        <?php endforeach ?>
-    <?php else: ?>
-            <div class="col-md-12 m4 l4 center-align">
-                <div class="card">
-
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">No hay productos en esta categoria.</span>
-                    </div>
                 </div>
             </div>
+            <div class="card-content grey lighten-4">
+              <div id="test4"> 
+                <div class="row">
+                <?php if ($product!=false): ?>
+                <?php foreach ($product as $key0): ?>
+                    <div class="col s12 m4 l4">
+                    <a href="<?=site_url('frontend/detalle/'.$key0->get('pro_id'))?>">
+                        <div class="card hoverable center-align">
+                            <div class="card-image waves-effect waves-block waves-light">
+                            
+                                <img class="activator" src="<?= base_url('resources/img/'.$multimedia[$key0->get('pro_id')][0]->get('mul_route'));?>">
+                            
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4"><?= $key0->get('pro_name') ?></span>
+                                <p><a>Precio: $ <?= $key0->get('pro_price') ?></a></p>
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                <?php endforeach ?>
+                <?php else: ?>
+                    <div class="col-md-12 m4 l4 center-align">
+                        <div class="card">
 
-        <?php endif ?>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">No hay productos en esta categoria.</span>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+                </div>
+              </div>
+            </div>
         </div>
-
-
-          </div>
-        </div>
-      </div>
-      </div>
+    </div>
 </div>
 
 

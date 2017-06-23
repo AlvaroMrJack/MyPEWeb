@@ -118,7 +118,7 @@
                     </li>
 
                     <li>
-                        <a class='dropdown-button' href='<?= site_url('frontend/productos') ?>'>Productos</a>
+                        <a href='<?= site_url('frontend/productos') ?>'>Productos</a>
                     </li>
 
                     <!-- <li>
